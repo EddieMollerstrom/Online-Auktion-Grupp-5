@@ -1,9 +1,10 @@
-//import Router from "./components/router.jsx"
+import Header from "./components/Header.jsx";
+import Router from "./components/Router.jsx";
 
 function App() {
   return (
     <>
-      <h1></h1>
+      <Router />
     </>
   );
 }
