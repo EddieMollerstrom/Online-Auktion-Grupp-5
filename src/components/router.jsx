@@ -1,9 +1,13 @@
-/*import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "./Footer.jsx";
 
-export default function Router () {
-    <BrowserRouter>
-        <Routes>
-            
-        </Routes>
-    </BrowserRouter>
-}*/
+export default function Router() {
+  return (
+    <>
+      <BrowserRouter>
+        <Footer />
+        <Routes></Routes>
+      </BrowserRouter>
+    </>
+  );
+}

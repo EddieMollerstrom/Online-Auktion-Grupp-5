@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   font-family: "Quicksand", sans-serif;
+}
+
+#hammer-slogan {
+  font-size: 9px;
 }
