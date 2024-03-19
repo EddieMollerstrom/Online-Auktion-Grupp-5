@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+/*import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
 
 export default function Router () {
     <BrowserRouter>
@@ -6,4 +6,4 @@ export default function Router () {
             
         </Routes>
     </BrowserRouter>
-}
+}*/
