@@ -6,6 +6,19 @@
   font-family: "Quicksand", sans-serif;
 }
 
+<<<<<<< HEAD
 #hammer-slogan {
   font-size: 9px;
+=======
+header {
+  height: 90px;
+
+  #logo {
+    font-size: 30px;
+  }
+  nav {
+    width: 55rem;
+    font-size: 24px;
+  }
+>>>>>>> main
 }
