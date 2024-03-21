@@ -82,7 +82,6 @@ header {
 
 /*LoginSignup*/
 
-/* Main container for login and signup */
 .login-signup-main-container {
   display: flex;
   justify-content: space-between;
@@ -93,7 +92,6 @@ header {
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
 }
 
-/* Individual container for login section */
 .login-container {
   flex: 1;
   display: flex;
@@ -157,7 +155,6 @@ header {
   color: black;
 }
 
-/* Input field styles */
 input {
   width: 100%;
   padding: 12px;
@@ -173,7 +170,6 @@ input::placeholder {
   color: black;
 }
 
-/* Button styles */
 button {
   width: 100%;
   padding: 15px;
