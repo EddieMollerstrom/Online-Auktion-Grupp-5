@@ -26,8 +26,24 @@
     }
   ],
 
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+  "users": [
+    {
+      "id": "1",
+      "userName": "Po",
+      "email": "po@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "id": "2",
+      "userName": "Oogway",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "id": "3",
+      "userName": "Shifu",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    }
   ]
 }
