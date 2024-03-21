@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./Footer.jsx";
-import Header from "./Header.jsx";
 import Home from "../pages/Home.jsx";
 import ChangeMyName from "../pages/ChangeMyName.jsx";
 import AppLayout from "../AppLayout.jsx";
