@@ -12,7 +12,7 @@ export default function Header() {
           <Link to={"/"}>Om oss</Link>
           <Link to={"/"}>Mina sidor</Link>
           <Link
-            to={"/"}
+            to={"/LoginSignup"}
             className="bg-custom-yellow h-12 w-40 flex place-content-center items-center rounded-full text-custom-green"
           >
             Logga In

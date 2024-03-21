@@ -21,3 +21,124 @@ header {
 #hammer-slogan {
   font-size: 9px;
 }
+
+/*LoginSignup*/
+
+/* Main container for login and signup */
+.login-signup-main-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 60%;
+  margin: 50px auto;
+  border-radius: 15px;
+
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+/* Individual container for login section */
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+
+  height: 100vh;
+  max-width: 45%;
+  background-color: #495e57;
+  border-radius: 15px 0 0 15px;
+  text-align: center;
+
+  position: relative;
+}
+.signup-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  height: 100vh;
+  max-width: 55%;
+  background-color: #ffffff;
+
+  border-radius: 0 15px 15px 0;
+  text-align: center;
+
+  position: relative;
+}
+
+.login-position-handler {
+  position: relative;
+  bottom: 19px;
+}
+.signup-position-handler {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.title-login,
+.title-signup {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+
+  color: black;
+  white-space: nowrap;
+}
+.title-login {
+  position: relative;
+  bottom: 100px;
+
+  color: white;
+}
+.title-signup {
+  position: relative;
+  bottom: 70px;
+
+  font-size: 3rem;
+  color: black;
+}
+
+/* Input field styles */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  background-color: hsl(0, 0%, 92%);
+
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+input::placeholder {
+  color: black;
+}
+
+/* Button styles */
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #f4ce14;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+button:hover {
+  background-color: rgb(149, 149, 3);
+  color: white;
+}
+
+.signup-btn {
+  position: relative;
+  top: 25px;
+  width: 70%;
+
+  margin: 0 auto;
+}
+/*LoginSignup*/
