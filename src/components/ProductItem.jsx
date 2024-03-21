@@ -22,24 +22,50 @@ export default function ProductItem() {
       price: 10,
       description: "Horsey",
     },
+    {
+      img: HorseImage,
+      name: "Ko",
+      price: 10,
+      description: "Horsey",
+    },
+    {
+      img: HorseImage,
+      name: "Ko",
+      price: 10,
+      description: "Horsey",
+    },
+    {
+      img: HorseImage,
+      name: "Ko",
+      price: 10,
+      description: "Horsey",
+    },
   ];
 
   const [searchInput, setSearchInput] = useState("");
 
   return (
     <>
-      <input
-        id="search"
-        type="text"
-        placeholder="search here"
-        onChange={(e) => {
-          setSearchInput(e.target.value);
-        }}
-      />
+      <section className="flex flex-col items-center gap-12 p-8">
+        <div className="flex flex-col">
+          <h2 className="text-xl uppercase p-4 tracking-widest font-medium self-center">
+            Vad söker du idag?
+          </h2>
+          <input
+            className="w-96 h-8"
+            id="search"
+            type="text"
+            placeholder="Sök här"
+            onChange={(e) => {
+              setSearchInput(e.target.value);
+            }}
+          />
+        </div>
+        <h2 className="text-2xl uppercase p-4 tracking-widest font-medium border-solid border-y-2 border-black">
+          Current Auctions
+        </h2>
 
-      <main className="flex flex-wrap justify-center gap-10 m-20">
-        <h2>Current Auctions</h2>
-        <ul>
+        <ul className="list-none grid grid-cols-3 gap-10 align">
           {products
             .filter((product) => {
               const searchLowerCase = searchInput.toLowerCase();
@@ -52,7 +78,7 @@ export default function ProductItem() {
               <ProductCard key={product.name} product={product} />
             ))}
         </ul>
-      </main>
+      </section>
     </>
   );
 }

@@ -3,12 +3,14 @@ export default function ProductCard(props) {
 
   return (
     <>
-      <li className="flex-col bg-custom-white inline-block border border-custom-grey p-1">
-        <img className="w-64" src={img} />
-        <div>
-          <h2 key={name}>{name}</h2>
-          <p>{description}</p>
-          <span>{price}</span>
+      <li className="flex gap-1">
+        <img className="w-36 bg-contain" src={img} />
+        <div className="flex flex-col gap-3 p-1.5 items-start">
+          <h3 className="text-xl font-normal" key={name}>
+            {name}
+          </h3>
+          <p className="text-base font-sm italic mb-auto">{description}</p>
+          <span className="block text-base">{price}</span>
         </div>
       </li>
     </>
