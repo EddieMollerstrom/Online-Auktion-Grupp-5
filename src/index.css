@@ -22,3 +22,61 @@ header {
 #hammer-slogan {
   font-size: 9px;
 }
+
+#contactMainContainer {
+  width: 100vw;
+  height: calc(100vh - 90px);
+
+  #contactContainer {
+    height: 717px;
+    width: 1120px;
+
+    #formContainer {
+      height: 500px;
+      width: auto;
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      form {
+        width: 482px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 17px;
+        font-size: 16px;
+
+        input {
+          border-radius: 10px;
+          width: 229px;
+          height: 44px;
+          padding: 0px 1rem;
+          outline: none;
+        }
+        textarea {
+          width: 475px;
+          height: 183px;
+          border-radius: 10px;
+          padding: 1rem;
+          outline: none;
+        }
+      }
+    }
+
+    #infoContainer {
+      height: 500px;
+      width: auto;
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 18px;
+        margin-bottom: 2rem;
+        line-height: 3rem;
+      }
+    }
+  }
+}
