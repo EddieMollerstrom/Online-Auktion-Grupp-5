@@ -9,7 +9,7 @@ export default function Header() {
         </Link>
         <nav className="flex place-content-around font-bold text-custom-white items-center">
           <Link to={"/ChangeMyName"}>Skapa annons</Link>
-          <Link to={"/"}>Om oss</Link>
+          <Link to={"/AboutUs"}>Om oss</Link>
           <Link to={"/Contact"}>Kontakt</Link>
           <Link to={"/"}>Mina sidor</Link>
           <Link

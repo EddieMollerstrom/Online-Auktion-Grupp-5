@@ -3,6 +3,7 @@ import Home from "../pages/Home.jsx";
 import ChangeMyName from "../pages/ChangeMyName.jsx";
 import AppLayout from "../AppLayout.jsx";
 import Contact from "../pages/Contact.jsx";
+import AboutUs from "../pages/AboutUs.jsx";
 
 export default function Router() {
   return (
@@ -13,6 +14,7 @@ export default function Router() {
             <Route index element={<Home />} />
             <Route path="/ChangeMyName" element={<ChangeMyName />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/AboutUs" element={<AboutUs />} />
           </Route>
         </Routes>
       </BrowserRouter>
