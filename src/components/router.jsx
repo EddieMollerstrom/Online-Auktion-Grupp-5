@@ -13,6 +13,7 @@ export default function Router() {
             <Route index element={<Home />} />
             <Route path="/ChangeMyName" element={<ChangeMyName />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/Contact" element={<Contact />} />
           </Route>
         </Routes>
       </BrowserRouter>
