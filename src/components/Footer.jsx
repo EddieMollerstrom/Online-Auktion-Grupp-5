@@ -41,7 +41,6 @@ export default function Footer() {
           <p>COPYRIGHT&copy; 2024 E-HAMMER. ALLA RÄTTIGHETER FÖRBEHÅLLNA</p>
         </section>
       </footer>
-      ;
     </>
   );
 }
