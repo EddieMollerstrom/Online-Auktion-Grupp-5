@@ -1,46 +1,26 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-import HorseImage from "/Horse.jpg";
 
 export default function ProductItem() {
-  const products = [
-    {
-      img: HorseImage,
-      name: "Häst",
-      price: 10,
-      description: "Horsey",
-    },
-    {
-      img: HorseImage,
-      name: "Flygande Snigel",
-      price: 10,
-      description: "Horsey",
-    },
-    {
-      img: HorseImage,
-      name: "Ko",
-      price: 10,
-      description: "Horsey",
-    },
-    {
-      img: HorseImage,
-      name: "Ko",
-      price: 10,
-      description: "Horsey",
-    },
-    {
-      img: HorseImage,
-      name: "Ko",
-      price: 10,
-      description: "Horsey",
-    },
-    {
-      img: HorseImage,
-      name: "Ko",
-      price: 10,
-      description: "Horsey",
-    },
-  ];
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/products/");
+        const data = await response.json();
+
+        setProduct(data);
+        setLoading(false);
+
+        setTags(extractedTags);
+      } catch (error) {
+        console.error("Fel vid fetch", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const [searchInput, setSearchInput] = useState("");
 
