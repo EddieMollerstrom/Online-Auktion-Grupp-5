@@ -4,6 +4,7 @@ import ChangeMyName from "../pages/ChangeMyName.jsx";
 import AppLayout from "../AppLayout.jsx";
 import Contact from "../pages/Contact.jsx";
 import LoginSignup from "../pages/LoginSignup.jsx";
+import AboutUs from "../pages/AboutUs.jsx";
 
 export default function Router() {
   return (
@@ -13,6 +14,7 @@ export default function Router() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
             <Route path="/ChangeMyName" element={<ChangeMyName />} />
+            <Route path="/AboutUs" element={<AboutUs />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/LoginSignup" element={<LoginSignup />} />
           </Route>

@@ -1,9 +1,9 @@
 export default function AboutUs() {
   return (
     <>
-      <div>
-        <h2 className="about-us-title">ABOUT US</h2>
-        <p className="about-us-text">
+      <div className="bg-custom-green about-us-container">
+        <h2 className="text-custom-white about-us-title">ABOUT US</h2>
+        <p className="text-custom-white border-solid border-2 border-custom-yellow about-us-text">
           Välkommen till E-Hammer, din ultimata destination för spännande
           auktioner på nätet! Vi är stolta över att vara pionjärer inom den
           elektroniska auktionsvärlden, och sedan vår grundande år 2024 har vi
