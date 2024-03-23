@@ -39,12 +39,6 @@
   ],
   "users": [
     {
-      "id": "1",
-      "userName": "Po",
-      "email": "po@gmail.com",
-      "password": "abc123"
-    },
-    {
       "id": "2",
       "userName": "Oogway",
       "email": "oogway@gmail.com",
@@ -57,10 +51,16 @@
       "password": "abc123"
     },
     {
-      "email": "Lukasholmwolf@gmail.com",
+      "userName": "Po",
+      "email": "Po@gmail.com",
+      "password": "abc123",
+      "id": "SuNtyQr"
+    },
+    {
       "userName": "Skarader",
-      "password": "ABC123",
-      "id": "cgsyrIt"
+      "email": "lukasholmwolf@gmail.com",
+      "password": "abc123",
+      "id": "ndeKky2"
     }
   ]
 }

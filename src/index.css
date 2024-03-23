@@ -110,6 +110,15 @@ header {
       position: relative;
       bottom: 19px;
     }
+    .login-msg {
+      position: relative;
+      top: 20px;
+
+      word-wrap: break-word;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: whitesmoke;
+    }
   }
   .signup-container {
     flex: 1;
