@@ -14,7 +14,6 @@ export default function Router() {
             <Route index element={<Home />} />
             <Route path="/Auktionpage" element={<Auktionpage />} />
             <Route path="/Contact" element={<Contact />} />
-            <Route path="/Contact" element={<Contact />} />
           </Route>
         </Routes>
       </BrowserRouter>
