@@ -13,7 +13,10 @@ export default function Router() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
             <Route path="/ChangeMyName" element={<ChangeMyName />} />
-            <Route path="/product-info" element={<ProductInfoPage />} />
+            <Route
+              path="/product-info/:productId"
+              element={<ProductInfoPage />}
+            />
             <Route path="/Contact" element={<Contact />} />
           </Route>
         </Routes>
