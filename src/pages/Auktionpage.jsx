@@ -23,7 +23,7 @@ export default function Auktionpage() {
           <label htmlFor="contact">Kategori/Sökord</label>
           <input type="text" id="contact" name="contact" className="text-black" />
 
-          <label htmlFor="image" className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer">Bild:</label>
+          <label htmlFor="image" className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer">Bild</label>
           <input type="file" id="image" name="image" accept="image/*" required className="hidden"/>
 
           <input type="submit" value="Skapa annons" className="bg-custom-yellow text-custom-green py-2 px-4 rounded-full cursor-pointer" />
