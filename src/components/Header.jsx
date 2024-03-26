@@ -10,10 +10,11 @@ export default function Header() {
         <nav className="flex place-content-around font-bold text-custom-white items-center">
           <Link to={"/Auktionpage"}>Skapa annons</Link>
           <Link to={"/"}>Om oss</Link>
+          <Link to={"/AboutUs"}>Om oss</Link>
           <Link to={"/Contact"}>Kontakt</Link>
           <Link to={"/"}>Mina sidor</Link>
           <Link
-            to={"/"}
+            to={"/LoginSignup"}
             className="bg-custom-yellow h-12 w-40 flex place-content-center items-center rounded-full text-custom-green"
           >
             Logga In
