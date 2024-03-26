@@ -23,6 +23,18 @@
       "bidCount": 7,
       "price": 199,
       "shipping": "70 kr Postnord"
+    },
+    {
+      "id": "3",
+      "title": "Konstig katt",
+      "description": "Jag säljer nu min katt som är lite konstig till ett billigare pris. Den piper istället för att jama och den klättrar på allt den ser.",
+      "tags": ["Katt", "Liten", "Oragne", "Galen", "Billig"],
+      "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
+      "created": "2024-01-12T16:12:58.511Z",
+      "ends": "2024-06-24T00:00:43.511Z",
+      "bidCount": 7,
+      "price": 199,
+      "shipping": "70 kr Postnord"
     }
   ],
 
