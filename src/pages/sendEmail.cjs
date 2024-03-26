@@ -33,3 +33,6 @@ transporter.sendMail(mailOptions, (error, info) => {
 });
 
 // node sendEmail.js
+
+// Push notifications insteed of email notifacations.
+// sockets From serverside check when online.
