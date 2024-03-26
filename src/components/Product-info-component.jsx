@@ -75,7 +75,7 @@ export default function ProductInfoComponent() {
                 <p>{`${showCreatedDate.objectDayOfTheWeek} ${showCreatedDate.objectDate} ${showCreatedDate.objectMonth} ${showCreatedDate.objectHour}:${showCreatedDate.objectMinutes}`}</p>
                 <h2 className="font-bold text-3xl">{product.title}</h2>
                 <p className="font-medium text-lg">
-                  Slutpris |&nbsp; {product.bidCount}
+                  Slutpris |&nbsp; {product.bidCount} Bud
                 </p>
                 <h2 className="font-bold mb-8 text-3xl">{product.price} kr</h2>
               </div>
