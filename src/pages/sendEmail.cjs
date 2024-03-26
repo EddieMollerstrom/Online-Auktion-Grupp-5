@@ -1,3 +1,5 @@
+// npm install nodemailer
+
 // Import nodemailer module
 const nodemailer = require("nodemailer");
 
@@ -30,5 +32,4 @@ transporter.sendMail(mailOptions, (error, info) => {
   }
 });
 
-// npm install nodemailer
 // node sendEmail.js
