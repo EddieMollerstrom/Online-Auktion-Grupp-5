@@ -51,7 +51,7 @@ export default function Login() {
         <button className="login-btn bg-custom-yellow" onClick={HandleLogin}>
           LOGGA IN
         </button>
-        <p className="login-msg">{message}</p>
+        <p className="login-msg text-custom-white">{message}</p>
       </div>
     </>
   );

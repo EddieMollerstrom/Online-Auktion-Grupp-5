@@ -114,11 +114,10 @@ header {
     .login-msg {
       position: relative;
       top: 20px;
+      text-align: center;
 
-      word-wrap: break-word;
       font-size: 1.1rem;
       font-weight: bold;
-      color: whitesmoke;
     }
   }
   .signup-container {
