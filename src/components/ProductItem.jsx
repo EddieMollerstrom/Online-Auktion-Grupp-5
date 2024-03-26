@@ -27,7 +27,7 @@ export default function ProductItem() {
       {loading ? (
         <p>Laddar...</p>
       ) : (
-        <section className="flex flex-col items-center gap-12 p-8">
+        <section className="flex flex-col items-center gap-12 p-8 pb-72">
           <div className="flex flex-col w-9/12 h-36 bg-zinc-100">
             <h2 className="text-xl uppercase p-4 tracking-widest font-medium self-center">
               Vad söker du idag?
