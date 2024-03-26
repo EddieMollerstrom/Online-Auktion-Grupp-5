@@ -138,6 +138,10 @@ header {
       margin: 0 auto;
       width: 70%;
     }
+    form {
+      width: 70%;
+      margin: 0 auto;
+    }
   }
 
   .title-login,
@@ -199,9 +203,6 @@ header {
   .signup-btn {
     position: relative;
     top: 25px;
-    width: 70%;
-
-    margin: 0 auto;
   }
 }
 /*LoginSignup*/
