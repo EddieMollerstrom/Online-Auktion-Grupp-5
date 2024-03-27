@@ -14,13 +14,13 @@ export default function Auktionpage() {
           <label htmlFor="contact">Auktions tid:</label>
           <input type="text" id="contact" name="contact" required className="text-black" />
 
-          <label htmlFor="contact">Start pris?</label>
+          <label htmlFor="contact">Start pris:</label>
           <input type="text" id="contact" name="contact" required className="text-black" />
 
-          <label htmlFor="contact">Utköps pris</label>
+          <label htmlFor="contact">Utköps pris?:</label>
           <input type="text" id="contact" name="contact" className="text-black" />
 
-          <label htmlFor="contact">Kategori/Sökord</label>
+          <label htmlFor="contact">Kategori/Sökord:</label>
           <input type="text" id="contact" name="contact" className="text-black" />
 
           <label htmlFor="image" className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer">Bild</label>
