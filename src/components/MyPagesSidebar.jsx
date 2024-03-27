@@ -11,7 +11,7 @@ export default function MyPagesSidebar() {
           <span class="material-symbols-outlined">bookmark</span>SPARADE
           ANNONSER
         </Link>
-        <Link to={"/ChangeMyName"}>
+        <Link to={"/MyPages/Myobjects"}>
           <span class="material-symbols-outlined">sell</span>MINA ANNONSER
         </Link>
         <Link to={"/ChangeMyName"}>
