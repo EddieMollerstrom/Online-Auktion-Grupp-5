@@ -27,6 +27,7 @@ export default function ProductInfoComponent({ product }) {
     const date = formattedTime.toLocaleDateString("sv-SE", { day: "numeric" });
     const dayOfTheWeek = new Intl.DateTimeFormat("sv-SE", options)
       .format(formattedTime)
+      .replace("dag", "")
       .toUpperCase();
     const hour = formattedTime.getHours().toLocaleString("sv-SE");
     const minutes = formattedTime.getMinutes().toLocaleString("sv-SE");
