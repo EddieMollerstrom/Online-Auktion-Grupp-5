@@ -1,32 +1,31 @@
 // npm install nodemailer
 
-// Import nodemailer module
 const nodemailer = require("nodemailer");
 
-const myEmailAdress = "myEmail@gmail.com";
-const myPassword = "XXX";
+const myEmail = "lukasholmwolf@gmail.com";
+const myPassCode = "vfxdpgigyiqjbadq";
 
-// Create a transporter object using SMTP transport
+// Create a transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
-  service: "gmail",
+  service: "Gmail",
   auth: {
-    user: `${myEmailAdress}`,
-    pass: `${myPassword}`,
+    user: `${myEmail}`,
+    pass: `${myPassCode}`,
   },
 });
 
-// Email content
+// Define email options
 let mailOptions = {
-  from: `${myEmailAdress}`,
-  to: "lukasholmwolf@gmail.com",
-  subject: "Test Email",
-  text: "This is a test email sent from Node.js using nodemailer.",
+  from: `${myEmail}`,
+  to: `${myEmail}`,
+  subject: "Hello from VS Code",
+  text: "This is an email sent from VS Code using Node.js and nodemailer.",
 };
 
-// Send email
+// Send the email
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
-    console.log("Error occurred:", error);
+    console.error("Error occurred:", error);
   } else {
     console.log("Email sent:", info.response);
   }
