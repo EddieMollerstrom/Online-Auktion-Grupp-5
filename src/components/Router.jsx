@@ -14,7 +14,6 @@ export default function Router() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
-            <Route path="/ChangeMyName" element={<ChangeMyName />} />
             <Route
               path="/product-info/:productId"
               element={<ProductInfoPage />}
