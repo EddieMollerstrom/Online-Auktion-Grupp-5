@@ -7,7 +7,6 @@ import Contact from "../pages/Contact.jsx";
 import LoginSignup from "../pages/LoginSignup.jsx";
 import AboutUs from "../pages/AboutUs.jsx";
 
-
 export default function Router() {
   return (
     <>
@@ -15,16 +14,13 @@ export default function Router() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
-<<<<<<< HEAD
             <Route path="/ChangeMyName" element={<ChangeMyName />} />
             <Route
               path="/product-info/:productId"
               element={<ProductInfoPage />}
             />
-=======
             <Route path="/Auktionpage" element={<Auktionpage />} />
             <Route path="/AboutUs" element={<AboutUs />} />
->>>>>>> main
             <Route path="/Contact" element={<Contact />} />
             <Route path="/LoginSignup" element={<LoginSignup />} />
           </Route>
