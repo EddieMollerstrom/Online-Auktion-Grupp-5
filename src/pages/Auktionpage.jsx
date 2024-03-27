@@ -1,35 +1,158 @@
-export default function Auktionpage() {
+import React, { useState } from 'react';
+
+function AuctionForm() {
+
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [startPrice, setStartPrice] = useState('');
+  const [buyoutPrice, setBuyoutPrice] = useState('');
+  const [category, setCategory] = useState('');
+  const [image, setImage] = useState(null);
+
+  const formData = {
+    title: title,
+    description: description,
+    endDate: endDate,
+    startPrice: startPrice,
+    buyoutPrice: buyoutPrice,
+    category: category,
+    image: image,
+  };
+
+  
+  const handleSubmit = async (event) => {
+
+    try {
+      const response = await fetch(`/api/products`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      })
+  
+      if (response.ok) {
+        const result = await response.json()
+        console.log(result);
+     
+  
+      } else {
+        console.log('statuskod:', response);
+       
+  
+      }
+  
+    } catch (error) {
+      console.error('Något gick fel:', error);
+    }
+  
+  
+  
+
+
+  
+    event.preventDefault();
+
+
+  
+    console.log('Formulärdata:', formData);
+  };
+
+ 
+
   return (
-    <>
-      <h2 className="text-3xl font-bold mb-4 text-center">Skapa annons</h2>
+    <div className="flex justify-center min-h-screen p-4">
+      <form
+        className="bg-custom-grey rounded w-8/12 flex flex-col p-7 gap-3 text-custom-white annonscontainer"
+        
+        encType="multipart/form-data"
+      >
+        <label htmlFor="title">Titel:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          className="text-black"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
 
-      <div className="flex justify-center min-h-screen p-4">
-        <form className="bg-custom-grey rounded w-8/12 flex flex-col p-7 gap-3 text-custom-white annonscontainer" action="#" method="post" enctype="multipart/form-data">
-          <label  htmlFor="title">Titel:</label>
-          <input type="text" id="title" name="title" required className="text-black" />
+        <label htmlFor="description">Beskrivning:</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          
+          className="text-black"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+        ></textarea>
 
-          <label htmlFor="description">Beskrivning:</label>
-          <textarea id="description" name="description" rows="4" required className="text-black"></textarea>
+        <label htmlFor="endDate">Slutdatum för Auktion:</label>
+        <input
+          type="text"
+          id="endDate"
+          name="endDate"
+          
+          className="text-black"
+          value={endDate}
+          onChange={(event) => setEndDate(event.target.value)}
+        />
 
-          <label htmlFor="contact">Auktions tid:</label>
-          <input type="text" id="contact" name="contact" required className="text-black" />
+        <label htmlFor="startPrice">Start pris:</label>
+        <input
+          type="text"
+          id="startPrice"
+          name="startPrice"
+          
+          className="text-black"
+          value={startPrice}
+          onChange={(event) => setStartPrice(event.target.value)}
+        />
 
-          <label htmlFor="contact">Start pris?</label>
-          <input type="text" id="contact" name="contact" required className="text-black" />
+        <label htmlFor="buyoutPrice">Utköps pris:</label>
+        <input
+          type="text"
+          id="buyoutPrice"
+          name="buyoutPrice"
+          className="text-black"
+          value={buyoutPrice}
+          onChange={(event) => setBuyoutPrice(event.target.value)}
+        />
 
-          <label htmlFor="contact">Utköps pris</label>
-          <input type="text" id="contact" name="contact" className="text-black" />
+        <label htmlFor="category">Kategori/Sökord:</label>
+        <input
+          type="text"
+          id="category"
+          name="category"
+          className="text-black"
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+        />
 
-          <label htmlFor="contact">Kategori/Sökord</label>
-          <input type="text" id="contact" name="contact" className="text-black" />
+        <label
+          htmlFor="image"
+          className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer"
+        >
+          Bild
+        </label>
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          className="hidden"
+          onChange={(event) => setImage(event.target.files[0])}
+        />
 
-          <label htmlFor="image" className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer">Bild</label>
-          <input type="file" id="image" name="image" accept="image/*" required className="hidden"/>
-
-          <input type="submit" value="Skapa annons" className="bg-custom-yellow text-custom-green py-2 px-4 rounded-full cursor-pointer" />
-        </form>
-      </div>
-    </>
+        <input
+          type="button"
+          onClick={handleSubmit}
+          value="Skapa annons"
+          className="bg-custom-yellow text-custom-green py-2 px-4 rounded-full cursor-pointer"
+        />
+      </form>
+    </div>
   );
 }
 
+export default AuctionForm;
