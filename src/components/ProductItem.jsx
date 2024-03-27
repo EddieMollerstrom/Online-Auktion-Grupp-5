@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 export default function ProductItem() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,15 @@ export default function ProductItem() {
     fetchData();
   }, []);
 
-  const [searchInput, setSearchInput] = useState("");
+  const filteredProducts = product
+    ? product.filter((product) => {
+        const searchLowerCase = searchInput.toLowerCase();
+        const productNameLowerCase = product.title.toLowerCase();
+        return searchLowerCase === ""
+          ? true
+          : productNameLowerCase.includes(searchLowerCase);
+      })
+    : [];
 
   return (
     <>
@@ -28,37 +37,41 @@ export default function ProductItem() {
         <p>Laddar...</p>
       ) : (
         <section className="flex flex-col items-center gap-12 p-8 pb-72">
-          <div className="flex flex-col w-9/12 h-36 bg-zinc-100">
-            <h2 className="text-xl uppercase p-4 tracking-widest font-medium self-center">
-              Vad söker du idag?
-            </h2>
-            <input
-              className="w-96 h-8 self-center"
-              id="search"
-              type="text"
-              placeholder="Vad letar du efter?"
-              onChange={(e) => {
-                setSearchInput(e.target.value);
-              }}
-            />
+          <div className="flex items-center justify-center w-9/12 h-44 bg-custom-green m-16 rounded">
+            <div className="w-9/12 flex flex-col self-center">
+              <h2 className="text-xl uppercase tracking-widest font-bold self-start mb-2.5 text-custom-white">
+                Vad söker du idag?
+              </h2>
+              <input
+                className="min-w-full h-10 self-center p-2  mb-5 rounded-sm"
+                id="search"
+                type="text"
+                placeholder="Sök här . . ."
+                value={searchInput}
+                onChange={(e) => {
+                  setSearchInput(e.target.value);
+                }}
+              />
+            </div>
           </div>
-          <h2 className="text-2xl uppercase p-4 tracking-widest font-medium border-solid border-y-2 border-black">
-            Current Auctions
-          </h2>
-
-          <ul className="list-none grid grid-cols-3 gap-10 align">
-            {product
-              .filter((product) => {
-                const searchLowerCase = searchInput.toLowerCase();
-                const productNameLowerCase = product.title.toLowerCase();
-                return searchLowerCase === ""
-                  ? true
-                  : productNameLowerCase.includes(searchLowerCase);
-              })
-              .map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-          </ul>
+          {filteredProducts.length > 0 ? (
+            <>
+              <div className="flex w-9/12">
+                <h2 className="text-4xl uppercase ml-10 tracking-widest font-bold">
+                  Auktioner
+                </h2>
+              </div>
+              <ul className="list-none grid grid-cols-4 gap-10">
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="text-xl uppercase tracking-widest font-bold mb-2.5 text-custom-gray">
+              Inga produkter matchade din sökning.
+            </p>
+          )}
         </section>
       )}
     </>

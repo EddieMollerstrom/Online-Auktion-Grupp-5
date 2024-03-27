@@ -1,5 +1,5 @@
 export default function ProductCard(props) {
-  const { img, title, price, description, bidCount } = props.product;
+  const { img, title, price, ends, bidCount } = props.product;
 
   return (
     <>
@@ -15,9 +15,7 @@ export default function ProductCard(props) {
           >
             {title}
           </h3>
-          <p className="text-base font-sm italic mb-auto cursor-pointer hover:underline">
-            {description}
-          </p>
+          <p className="text-base font-sm mb-auto cursor-pointer">{ends}</p>
           <span className="block text-base font-normal">
             {price}kr {bidCount} bud
           </span>
