@@ -1,3 +1,5 @@
+import RemoveAuction from "../components/RemoveAuction.jsx";
+
 export default function MyPages() {
   const user = {
     firstName: "Jakob",
@@ -40,6 +42,7 @@ export default function MyPages() {
 
         <div className="overview border-4 border-custom-green">
           <div className="head border-b-[3px] border-custom-green"></div>
+          <RemoveAuction />
         </div>
       </section>
     </>
