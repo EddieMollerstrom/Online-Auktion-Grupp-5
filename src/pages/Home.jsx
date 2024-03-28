@@ -1,7 +1,9 @@
+import ProductItem from "../components/ProductItem";
+
 export default function Home() {
   return (
     <>
-      <h1>HEJ</h1>
+      <ProductItem />
     </>
   );
 }
