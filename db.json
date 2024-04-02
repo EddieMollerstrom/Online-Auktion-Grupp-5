@@ -63,6 +63,16 @@
       "buyoutPrice": "10000000",
       "category": "Hund",
       "img": "https://www.sva.se/media/450n2i0f/istock-505535141.jpg?center=0.305648726625478,0.47827326413084265&mode=crop&width=290&height=516&rnd=2372941"
+    },
+    {
+      "id": "b652",
+      "title": "Svart vitt häst",
+      "description": "snabb",
+      "endDate": "2024-11-01",
+      "startPrice": "200kr",
+      "buyoutPrice": "10000000",
+      "category": "Häst",
+      "img": "https://st.depositphotos.com/67903508/58111/i/1600/depositphotos_581118112-stock-photo-two-zebra-running-bush-namibia.jpg"
     }
   ],
   "users": [
