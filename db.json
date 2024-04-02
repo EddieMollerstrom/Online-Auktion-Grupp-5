@@ -55,24 +55,14 @@
       "shipping": "70 kr Postnord"
     },
     {
-      "id": "23fe",
-      "title": "aa",
-      "description": "a",
+      "id": "9f2d",
+      "title": "Hundfan",
+      "description": "aaa",
       "endDate": "2024-11-01",
       "startPrice": "200kr",
       "buyoutPrice": "10000000",
       "category": "Hund",
-      "image": null
-    },
-    {
-      "id": "f7a1",
-      "title": "aa",
-      "description": "a",
-      "endDate": "2024-11-01",
-      "startPrice": "200kr",
-      "buyoutPrice": "10000000",
-      "category": "Hund",
-      "image": {}
+      "img": "https://www.sva.se/media/450n2i0f/istock-505535141.jpg?center=0.305648726625478,0.47827326413084265&mode=crop&width=290&height=516&rnd=2372941"
     }
   ],
   "users": [

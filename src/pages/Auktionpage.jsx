@@ -8,16 +8,18 @@ function AuctionForm() {
   const [startPrice, setStartPrice] = useState('');
   const [buyoutPrice, setBuyoutPrice] = useState('');
   const [category, setCategory] = useState('');
-  const [image, setImage] = useState(null);
+  const [img, setImageURL] = useState('');
+
+
 
   const formData = {
-    title: title,
-    description: description,
-    endDate: endDate,
-    startPrice: startPrice,
-    buyoutPrice: buyoutPrice,
-    category: category,
-    image: image,
+    title,
+    description,
+    endDate,
+    startPrice,
+    buyoutPrice,
+    category,
+    img,
   };
 
   
@@ -128,21 +130,23 @@ function AuctionForm() {
           value={category}
           onChange={(event) => setCategory(event.target.value)}
         />
-
         <label
-          htmlFor="image"
+          htmlFor="imageURL"
           className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer"
         >
-          Bild
+          Bild URL
         </label>
         <input
-          type="file"
-          id="image"
-          name="image"
-          accept="image/*"
-          className="hidden"
-          onChange={(event) => setImage(event.target.files[0])}
-        />
+        type="text"
+        id="img"
+        name="img"
+        className="text-black"
+        placeholder="Ange bildens URL"
+        value={img} // Uppdaterat namnet här
+        onChange={(event) => setImageURL(event.target.value)} // Om detta inte är ett copy-paste-fel, ändra detta också till setImageURL
+      />
+
+
 
         <input
           type="button"
