@@ -14,6 +14,7 @@ export default function ProductInfoComponent({ product }) {
     price,
     shipping,
     currentHighestBid,
+    minimumBid,
   } = product;
 
   const [tag, setTags] = useState("");
@@ -72,10 +73,14 @@ export default function ProductInfoComponent({ product }) {
             <div>
               <p>{`${showCreatedDate.objectDayOfTheWeek} ${showCreatedDate.objectDate} ${showCreatedDate.objectMonth} ${showCreatedDate.objectHour}:${showCreatedDate.objectMinutes}`}</p>
               <h2 className="font-bold text-3xl">{title}</h2>
+              <p className="font-medium text-lg">{bidCount} Bud</p>
+              <h2 className="font-semi-bold mb-5 text-2xl">
+                Utköps pris: {price}kr
+              </h2>
+              <p className="font-medium text-lg">Lägsta bud: {minimumBid}kr</p>
               <p className="font-medium text-lg">
-                Slutpris |&nbsp; {bidCount} Bud
+                Nuvarande högsta bud: {currentHighestBid}kr
               </p>
-              <h2 className="font-bold mb-8 text-3xl">{price} kr</h2>
             </div>
 
             <div className="flex flex-col gap-2 text-lg font-semibold">
@@ -118,6 +123,7 @@ export default function ProductInfoComponent({ product }) {
         productId={id}
         bidCount={bidCount}
         currentHighestBid={currentHighestBid}
+        minimumBid={minimumBid}
       />
     </>
   );

@@ -1,18 +1,26 @@
 import { useState } from "react";
 
-export default function BidDialog({ productId, bidCount, currentHighestBid }) {
+export default function BidDialog({
+  productId,
+  bidCount,
+  currentHighestBid,
+  minimumBid,
+}) {
   const [bidInput, setBidInput] = useState(null);
   const [badBidInput, setBadBidInput] = useState("");
 
   const updateBidCount = async () => {
-    if (bidInput > currentHighestBid) {
+    if (bidInput > currentHighestBid && bidInput > minimumBid) {
       try {
         const response = await fetch(`/api/products/${productId}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ bidCount: bidCount + 1 }),
+          body: JSON.stringify({
+            bidCount: bidCount + 1,
+            currentHighestBid: bidInput,
+          }),
         });
         const result = response.json();
         console.log(result);
@@ -20,8 +28,6 @@ export default function BidDialog({ productId, bidCount, currentHighestBid }) {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
-        // Om förfrågan är lyckad kan du göra något här, som att uppdatera lokalt state.
       } catch (error) {
         console.error("There was an error updating bid count:", error);
       }
@@ -61,22 +67,6 @@ export default function BidDialog({ productId, bidCount, currentHighestBid }) {
           <br />
           <button
             onClick={closeModal}
-            className="border-2 border-solid border-custom-green bg-custom-green text-custom-white rounded-md p-1 hover:bg-custom-white hover:text-custom-green"
-          >
-            Stäng
-          </button>
-        </div>
-      </dialog>
-
-      <dialog id="buyDialog" className="h-44 w-80 rounded-md p-5">
-        <div className="flex flex-col justify-center">
-          <h2 className="text-center mb-2">Köp nu</h2>
-          <button className="border-2 border-solid border-custom-green hover:bg-custom-green hover:text-custom-white rounded-md p-1 bg-custom-white text-custom-green">
-            Köp
-          </button>
-          <br />
-          <button
-            onClick={() => document.getElementById("buyDialog").close()}
             className="border-2 border-solid border-custom-green bg-custom-green text-custom-white rounded-md p-1 hover:bg-custom-white hover:text-custom-green"
           >
             Stäng
