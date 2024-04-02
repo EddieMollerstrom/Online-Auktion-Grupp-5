@@ -29,5 +29,15 @@
   "posts": [
     { "id": "1", "title": "a title", "views": 100 },
     { "id": "2", "title": "another title", "views": 200 }
+  ],
+
+  "testUsers": [
+    {
+      "firstName": "Jakob",
+      "lastName": "Olsson",
+      "currentSales": [1, 2, 3, 4, 5],
+      "sold": [1, 2, 3],
+      "notSold": [1]
+    }
   ]
 }

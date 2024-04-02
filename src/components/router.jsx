@@ -5,6 +5,7 @@ import AppLayout from "../AppLayout.jsx";
 import Contact from "../pages/Contact.jsx";
 import MyPages from "../pages/MyPages.jsx";
 import MyPagesAppLayout from "../MyPagesAppLayout.jsx";
+import MyPagesSavedObjects from "../pages/MyPagesSaved.jsx";
 
 export default function Router() {
   return (
@@ -15,8 +16,13 @@ export default function Router() {
             <Route index element={<Home />} />
             <Route path="/ChangeMyName" element={<ChangeMyName />} />
             <Route path="/Contact" element={<Contact />} />
+
             <Route path="/MyPages" element={<MyPagesAppLayout />}>
               <Route index element={<MyPages />} />
+              <Route
+                path="/MyPages/SavedObjects"
+                element={<MyPagesSavedObjects />}
+              />
             </Route>
           </Route>
         </Routes>
