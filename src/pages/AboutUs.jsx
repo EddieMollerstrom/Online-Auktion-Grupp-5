@@ -8,7 +8,7 @@ export default function AboutUs() {
       </div>
       <div className="sm:w-1/2 p-5">
         <div className="text">
-          <span className="text-gray-500 border-b-2 border-custom-yellow uppercase">
+          <span className="text-custom-green border-b-2 border-custom-yellow uppercase">
             About us
           </span>
           <h2 className="my-4 font-bold text-3xl  sm:text-4xl text-custom-yellow">
