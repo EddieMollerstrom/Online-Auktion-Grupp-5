@@ -15,9 +15,10 @@ export default function AboutUs() {
             About <span className="text-custom-green">Our Company</span>
           </h2>
           <p className="text-custom-green text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
-            commodi doloremque, fugiat illum magni minus nisi nulla numquam
-            obcaecati placeat quia, repellat tempore voluptatum.
+            Upptäck vår unika auktionsplattform för djur där varje bud är en
+            möjlighet att föra hem en del av naturens skönhet. Från majestätiska
+            lejon till eleganta svanar, vårt urval hyllar mångfalden i
+            djurlivet.
           </p>
         </div>
       </div>
