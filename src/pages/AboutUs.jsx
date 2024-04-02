@@ -1,7 +1,7 @@
 export default function AboutUs() {
   return (
     <>
-      <div className="bg-custom-green mx-auto my-10 p-6 rounded-lg about-us-container">
+      <div className="bg-custom-green mx-auto my-10 p-6 rounded-lg w-4/5">
         <h2 className="text-custom-white text-center mb-4 p-4 font-mono font-bold text-4xl">
           ABOUT US
         </h2>
