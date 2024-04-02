@@ -16,7 +16,7 @@ export default function ProductCard(props) {
             {title}
           </h3>
           <p className="text-base font-sm mb-auto cursor-pointer">{ends}</p>
-          <span className="block text-base font-normal">
+          <span className="block text-base font-normal cursor-pointer">
             {price}kr {bidCount} bud
           </span>
         </div>
