@@ -163,20 +163,6 @@ header {
 
 /*AboutUs*/
 
-.about-us-container {
-  width: 80%;
-  margin: 50px auto;
-  padding: 25px;
-  border-radius: 12px;
-}
-.about-us-title {
-  text-align: center;
-  margin-bottom: 16px;
-  padding: 10px;
-  font-family: monospace, sans-serif;
-  font-weight: bold;
-  font-size: 2.5rem;
-}
 .about-us-text {
   font-family: monospace, sans-serif;
   text-align: center;
