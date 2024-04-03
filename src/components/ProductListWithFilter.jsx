@@ -21,7 +21,6 @@ export default function ProductListWithFilter({ products }) {
         const productNameLowerCase = product.title.toLowerCase();
         const tagsLowerCase = product.tags ? product.tags.map((tag) => tag.toLowerCase()) : [];
 
-
         return searchLowerCase === ""
           ? true
           : productNameLowerCase.includes(searchLowerCase) ||
@@ -73,7 +72,7 @@ export default function ProductListWithFilter({ products }) {
                   setSearchInput(e.target.value);
                 }}
               />
-              <button
+              {/*   <button
                 className="button"
                 onClick={() => setIsDropdownVisible(!isDropdownVisible)}
               >
@@ -89,7 +88,7 @@ export default function ProductListWithFilter({ products }) {
                     {item.category}
                   </div>
                 ))}
-              </div> 
+              </div> */}
             </div>
           </div>
         </div>
