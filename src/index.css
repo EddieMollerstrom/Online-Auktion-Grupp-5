@@ -25,6 +25,8 @@ header {
 #contactMainContainer {
   width: 100vw;
   height: calc(100vh - 90px);
+  margin-top: 20vh;
+  margin-bottom: 20vh;
 
   #contactContainer {
     height: 717px;
