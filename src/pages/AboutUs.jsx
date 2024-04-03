@@ -2,8 +2,8 @@ export default function AboutUs() {
   return (
     <div className="sm:flex items-center max-w-screen-lg bg-custom-white mx-auto">
       <div className="sm:w-1/2 p-10">
-        <div className="image object-center text-center bg-custom-green p-10 rounded-xl">
-          <img src="../public\images/hammer.png" alt="About Us" />
+        <div className="image object-center text-center bg-custom-green p-10 rounded-full">
+          <img src="../public\images/workpicture.png" alt="About Us" />
         </div>
       </div>
       <div className="sm:w-1/2 p-5">
@@ -15,9 +15,10 @@ export default function AboutUs() {
             About <span className="text-custom-green">Our Company</span>
           </h2>
           <p className="text-custom-green text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
-            commodi doloremque, fugiat illum magni minus nisi nulla numquam
-            obcaecati placeat quia, repellat tempore voluptatum.
+            Upptäck vår unika auktionsplattform för djur där varje bud är en
+            möjlighet att föra hem en del av naturens skönhet. Från majestätiska
+            lejon till eleganta svanar, vårt urval hyllar mångfalden i
+            djurlivet.
           </p>
         </div>
       </div>
