@@ -4,30 +4,96 @@
       "id": "1",
       "title": "Häst med lång hals",
       "description": "Giraffer är idisslare, precis som nötkreatur och andra hovdjur, och deras mage har fyra delar, med mat som passerar genom den första och vatten går direkt till den andra.",
-      "tags": ["Häst", "Lång", "Oragne", "Oanvänd", "Prickig"],
+      "tags": [
+        "Häst",
+        "Lång",
+        "Oragne",
+        "Oanvänd",
+        "Prickig"
+      ],
       "img": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Indoor_Giraffe_House_Belfast_Zoo.jpg",
       "created": "2024-03-21T11:42:43.511Z",
       "ends": "2024-04-21T00:00:43.511Z",
       "bidCount": 248,
       "price": 98543,
-      "shipping": "18 kr Frimärken"
+      "shipping": "18 kr Frimärken",
+      "category": "Horse"
     },
     {
       "id": "2",
       "title": "Konstig katt",
       "description": "Jag säljer nu min katt som är lite konstig till ett billigare pris. Den piper istället för att jama och den klättrar på allt den ser.",
-      "tags": ["Katt", "Liten", "Oragne", "Galen", "Billig"],
+      "tags": [
+        "Katt",
+        "Liten",
+        "Oragne",
+        "Galen",
+        "Billig"
+      ],
       "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
       "created": "2024-01-12T16:12:58.511Z",
       "ends": "2024-06-24T00:00:43.511Z",
       "bidCount": 7,
       "price": 199,
-      "shipping": "70 kr Postnord"
+      "shipping": "70 kr Postnord",
+      "category": "Katt"
+    },
+    {
+      "id": "3",
+      "title": "Konstig katt",
+      "description": "Jag säljer nu min katt som är lite konstig till ett billigare pris. Den piper istället för att jama och den klättrar på allt den ser.",
+      "tags": [
+        "Katt",
+        "Liten",
+        "Oragne",
+        "Galen",
+        "Billig"
+      ],
+      "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
+      "created": "2024-01-12T16:12:58.511Z",
+      "ends": "2024-06-24T00:00:43.511Z",
+      "bidCount": 7,
+      "price": 299,
+      "shipping": "70 kr Postnord",
+      "category": "Katt"
     }
   ],
-
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+  "users": [
+    {
+      "id": "2",
+      "userName": "Oogway",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "id": "3",
+      "userName": "Shifu",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "userName": "Po",
+      "email": "Po@gmail.com",
+      "password": "abc123",
+      "id": "SuNtyQr"
+    },
+    {
+      "userName": "Skarader",
+      "email": "lukasholmwolf@gmail.com",
+      "password": "abc123",
+      "id": "ndeKky2"
+    },
+    {
+      "userName": "hejhej",
+      "email": "hej@gmail.com",
+      "password": "hejhej",
+      "id": "xz9vOvP"
+    },
+    {
+      "id": "171e",
+      "userName": "valon",
+      "email": "valonahmeti95@outlook.com",
+      "password": "123"
+    }
   ]
 }
