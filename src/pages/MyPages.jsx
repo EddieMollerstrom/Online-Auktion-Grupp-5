@@ -1,23 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProductList from "../components/ProductList.jsx";
 
 export default function MyPages() {
+  const [userData, setUserData] = useState({ currentSales: [], sold: [], notSold: [], });
   const values = {
     title: "AKTIVA ANNONSER:",
   };
 
-  console.log(1);
   useEffect(() => {
-    console.log(2);
     const fetchData = async () => {
       try {
-        console.log(3);
         const response = await fetch("/api/testUsers");
-        console.log(4);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
-        console.log(5);
-        console.log(data);
-      } catch {
+        setUserData(data);
+      } catch (error) {
         console.error("Fel vid fetch", error);
       }
     };
@@ -28,7 +27,7 @@ export default function MyPages() {
     <>
       <section className="p-16">
         <h2 className="font-bold text-custom-green">
-          Välkommen {data.firstName}!
+          Välkommen {userData.firstName}!
         </h2>
         <p className="text-custom-green">Det här är dina sidor.</p>
 
@@ -38,17 +37,17 @@ export default function MyPages() {
           </div>
           <div className="activeWrapper w-full flex text-center text-custom-gry">
             <section className="flex justify-center items-center">
-              {data.currentSales.length}
+              {userData.currentSales.length}
               <br />
               AKTIVA
             </section>
             <section className="flex justify-center items-center">
-              {data.sold.length}
+              {userData.sold.length}
               <br />
               SÅLDA
             </section>
             <section className="flex justify-center items-center">
-              {data.notSold.length}
+              {userData.notSold.length}
               <br />
               EJ SÅLDA
             </section>
