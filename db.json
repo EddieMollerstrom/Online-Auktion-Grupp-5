@@ -42,46 +42,46 @@
       "id": "3",
       "title": "Konstig katt",
       "description": "Jag säljer nu min katt som är lite konstig till ett billigare pris. Den piper istället för att jama och den klättrar på allt den ser.",
-      "tags": [
-        "Katt",
-        "Liten",
-        "Oragne",
-        "Galen",
-        "Billig"
-      ],
+      "tags": ["Katt", "Liten", "Oragne", "Galen", "Billig"],
       "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
       "created": "2024-01-12T16:12:58.511Z",
       "ends": "2024-06-24T00:00:43.511Z",
       "bidCount": 7,
-      "price": 199,
-      "shipping": "70 kr Postnord"
-    },
-    {
-      "id": "9f2d",
-      "title": "Hundfan",
-      "description": "aaa",
-      "endDate": "2024-11-01",
-      "startPrice": "200kr",
-      "buyoutPrice": "10000000",
-      "category": "Hund",
-      "img": "https://www.sva.se/media/450n2i0f/istock-505535141.jpg?center=0.305648726625478,0.47827326413084265&mode=crop&width=290&height=516&rnd=2372941"
-    },
-    {
-      "id": "b652",
-      "title": "Svart vitt häst",
-      "description": "snabb",
-      "endDate": "2024-11-01",
-      "startPrice": "200kr",
-      "buyoutPrice": "10000000",
-      "category": "Häst",
-      "img": "https://st.depositphotos.com/67903508/58111/i/1600/depositphotos_581118112-stock-photo-two-zebra-running-bush-namibia.jpg",
-      "shipping": "70 kr Postnord"
-      
+      "price": 299,
+      "shipping": "70 kr Postnord",
+      "category": "Katt"
     }
   ],
-
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+  "users": [
+    {
+      "id": "2",
+      "userName": "Oogway",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "id": "3",
+      "userName": "Shifu",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "userName": "Po",
+      "email": "Po@gmail.com",
+      "password": "abc123",
+      "id": "SuNtyQr"
+    },
+    {
+      "userName": "Skarader",
+      "email": "lukasholmwolf@gmail.com",
+      "password": "abc123",
+      "id": "ndeKky2"
+    },
+    {
+      "userName": "hejhej",
+      "email": "hej@gmail.com",
+      "password": "hejhej",
+      "id": "xz9vOvP"
+    }
   ]
 }
