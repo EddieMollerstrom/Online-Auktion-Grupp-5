@@ -79,36 +79,9 @@
       
     }
   ],
-  "users": [
-    {
-      "id": "2",
-      "userName": "Oogway",
-      "email": "oogway@gmail.com",
-      "password": "abc123"
-    },
-    {
-      "id": "3",
-      "userName": "Shifu",
-      "email": "oogway@gmail.com",
-      "password": "abc123"
-    },
-    {
-      "userName": "Po",
-      "email": "Po@gmail.com",
-      "password": "abc123",
-      "id": "SuNtyQr"
-    },
-    {
-      "userName": "Skarader",
-      "email": "lukasholmwolf@gmail.com",
-      "password": "abc123",
-      "id": "ndeKky2"
-    },
-    {
-      "userName": "hejhej",
-      "email": "hej@gmail.com",
-      "password": "hejhej",
-      "id": "xz9vOvP"
-    }
+
+  "posts": [
+    { "id": "1", "title": "a title", "views": 100 },
+    { "id": "2", "title": "another title", "views": 200 }
   ]
 }
