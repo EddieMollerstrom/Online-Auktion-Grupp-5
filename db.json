@@ -16,7 +16,8 @@
       "ends": "2024-04-21T00:00:43.511Z",
       "bidCount": 248,
       "price": 98543,
-      "shipping": "18 kr Frimärken"
+      "shipping": "18 kr Frimärken",
+      "category": "Horse"
     },
     {
       "id": "2",
@@ -34,7 +35,8 @@
       "ends": "2024-06-24T00:00:43.511Z",
       "bidCount": 7,
       "price": 199,
-      "shipping": "70 kr Postnord"
+      "shipping": "70 kr Postnord",
+      "category": "Katt"
     },
     {
       "id": "3",
@@ -72,7 +74,9 @@
       "startPrice": "200kr",
       "buyoutPrice": "10000000",
       "category": "Häst",
-      "img": "https://st.depositphotos.com/67903508/58111/i/1600/depositphotos_581118112-stock-photo-two-zebra-running-bush-namibia.jpg"
+      "img": "https://st.depositphotos.com/67903508/58111/i/1600/depositphotos_581118112-stock-photo-two-zebra-running-bush-namibia.jpg",
+      "shipping": "70 kr Postnord"
+      
     }
   ],
   "users": [
