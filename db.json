@@ -18,7 +18,8 @@
       "currentHighestBid": "2002",
       "price": 98543,
       "minimumBid": 200,
-      "shipping": "18 kr Frimärken"
+      "shipping": "18 kr Frimärken",
+      "category": "Horse"
     },
     {
       "id": "2",
@@ -34,8 +35,8 @@
       "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
       "created": "2024-01-12T16:12:58.511Z",
       "ends": "2024-06-24T00:00:43.511Z",
-      "bidCount": 10,
-      "currentHighestBid": "201",
+      "bidCount": 11,
+      "currentHighestBid": "4400",
       "price": 199,
       "minimumBid": 200,
       "shipping": "70 kr Postnord"
@@ -57,18 +58,6 @@
       "bidCount": 7,
       "price": 199,
       "shipping": "70 kr Postnord"
-    },
-    {
-      "id": "7533"
-    },
-    {
-      "id": "e96e"
-    },
-    {
-      "id": "8d22"
-    },
-    {
-      "id": "3c13"
     }
   ],
   "users": [
