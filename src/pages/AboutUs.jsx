@@ -2,8 +2,8 @@ export default function AboutUs() {
   return (
     <div className="sm:flex items-center max-w-screen-lg bg-custom-white mx-auto">
       <div className="sm:w-1/2 p-10">
-        <div className="image object-center text-center bg-custom-green p-10 rounded-xl">
-          <img src="../public\images/hammer.png" alt="About Us" />
+        <div className="image object-center text-center bg-custom-green p-10 rounded-full">
+          <img src="../public\images/workpicture.png" alt="About Us" />
         </div>
       </div>
       <div className="sm:w-1/2 p-5">
