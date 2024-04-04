@@ -28,7 +28,7 @@ export default function Footer() {
           <section className="text-custom-yellow pb-2">
             <img
               className="w-20"
-              src="../public/images/hammer.png"
+              src="../images/hammer.png"
               alt="gul hammare"
             />
             <p className="font-bold">E-HAMMER</p>
