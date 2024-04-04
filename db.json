@@ -4,13 +4,7 @@
       "id": "1",
       "title": "Häst med lång hals",
       "description": "Giraffer är idisslare, precis som nötkreatur och andra hovdjur, och deras mage har fyra delar, med mat som passerar genom den första och vatten går direkt till den andra.",
-      "tags": [
-        "Häst",
-        "Lång",
-        "Oragne",
-        "Oanvänd",
-        "Prickig"
-      ],
+      "tags": ["Häst", "Lång", "Oragne", "Oanvänd", "Prickig"],
       "img": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Indoor_Giraffe_House_Belfast_Zoo.jpg",
       "created": "2024-03-21T11:42:43.511Z",
       "ends": "2024-04-21T00:00:43.511Z",
@@ -25,13 +19,7 @@
       "id": "2",
       "title": "Konstig katt",
       "description": "Jag säljer nu min katt som är lite konstig till ett billigare pris. Den piper istället för att jama och den klättrar på allt den ser.",
-      "tags": [
-        "Katt",
-        "Liten",
-        "Oragne",
-        "Galen",
-        "Billig"
-      ],
+      "tags": ["Katt", "Liten", "Oragne", "Galen", "Billig"],
       "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
       "created": "2024-01-12T16:12:58.511Z",
       "ends": "2024-06-24T00:00:43.511Z",
@@ -45,19 +33,24 @@
       "id": "3",
       "title": "Konstig katt",
       "description": "Jag säljer nu min katt som är lite konstig till ett billigare pris. Den piper istället för att jama och den klättrar på allt den ser.",
-      "tags": [
-        "Katt",
-        "Liten",
-        "Oragne",
-        "Galen",
-        "Billig"
-      ],
+      "tags": ["Katt", "Liten", "Oragne", "Galen", "Billig"],
       "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
       "created": "2024-01-12T16:12:58.511Z",
       "ends": "2024-06-24T00:00:43.511Z",
       "bidCount": 7,
-      "price": 199,
-      "shipping": "70 kr Postnord"
+      "price": 299,
+      "shipping": "70 kr Postnord",
+      "category": "Katt"
+    },
+    {
+      "id": "ed60",
+      "title": "Vakthund",
+      "description": "stor agressiv och försvarar ditt hem",
+      "endDate": "2024-11-01",
+      "startPrice": "200kr",
+      "buyoutPrice": "10000000",
+      "category": "Hund",
+      "img": "https://images.pexels.com/photos/3361739/pexels-photo-3361739.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3361739.jpg&fm=jpg"
     }
   ],
   "users": [
@@ -90,6 +83,12 @@
       "email": "hej@gmail.com",
       "password": "hejhej",
       "id": "xz9vOvP"
+    },
+    {
+      "id": "171e",
+      "userName": "valon",
+      "email": "valonahmeti95@outlook.com",
+      "password": "123"
     }
   ]
 }

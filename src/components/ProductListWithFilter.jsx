@@ -19,7 +19,7 @@ export default function ProductListWithFilter({ products }) {
     ? products.filter((product) => {
         const searchLowerCase = searchInput.toLowerCase();
         const productNameLowerCase = product.title.toLowerCase();
-        const tagsLowerCase = product.tags.map((tag) => tag.toLowerCase());
+        const tagsLowerCase = product.tags ? product.tags.map((tag) => tag.toLowerCase()) : [];
 
         return searchLowerCase === ""
           ? true
