@@ -56,6 +56,16 @@
       "price": 299,
       "shipping": "70 kr Postnord",
       "category": "Katt"
+    },
+    {
+      "id": "ed60",
+      "title": "Vakthund",
+      "description": "stor agressiv och försvarar ditt hem",
+      "endDate": "2024-11-01",
+      "startPrice": "200kr",
+      "buyoutPrice": "10000000",
+      "category": "Hund",
+      "img": "https://images.pexels.com/photos/3361739/pexels-photo-3361739.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3361739.jpg&fm=jpg"
     }
   ],
   "users": [
