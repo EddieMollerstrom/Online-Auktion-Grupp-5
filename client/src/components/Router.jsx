@@ -28,7 +28,7 @@ export default function Router() {
 
             <Route path="/MyPages" element={<MyPagesAppLayout />}>
               <Route index element={<MyPages />} />
-              <Route path="/MyPages/Myobjects" element={<Myobjects  />} />
+              <Route path="/MyPages/Myobjects" element={<Myobjects />} />
               <Route
                 path="/MyPages/SavedObjects"
                 element={<MyPagesSavedObjects />}
