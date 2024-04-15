@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import ProductListWithFilter from "../components/ProductListWithFilter.jsx";
 
 export const fetchProducts = async () => {
@@ -7,21 +7,25 @@ export const fetchProducts = async () => {
     return res.json();
   } catch (error) {
     console.error("Fel vid fetch", error);
-    throw error;
   }
 };
 
-export default function Home({ loader }) {
+export default function Home() {
   const products = useLoaderData();
-  const loading = loader ? loader.isLoading() : false;
+
+  const navigation = useNavigation();
+  /*const loading = loader ? loader.isLoading() : false;   */
+  if (navigation.state === "loading") {
+    return (
+      <p className="text-2xl text-custom-grey flex flex-col text-l uppercase tracking-widest font-normal place-items-center mt-6">
+        Laddar...
+      </p>
+    );
+  }
 
   return (
     <>
-      {loading ? (
-        <p>Laddar...</p>
-      ) : (
-        <ProductListWithFilter products={products} />
-      )}
+      <ProductListWithFilter products={products} />
     </>
   );
 }

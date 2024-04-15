@@ -19,7 +19,7 @@ import NotFound from "../pages/NotFound.jsx";
 //Components
 import AppLayout from "../AppLayout.jsx";
 import MyPagesAppLayout from "../MyPagesAppLayout.jsx";
-import ProtectedRoutes from "./ProtectedRoutes.jsx";
+import ProtectedRoutes, { fetchUserData } from "./ProtectedRoutes.jsx";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +29,7 @@ const Router = createBrowserRouter(
       <Route path="/Contact" element={<Contact />} />
       <Route path="/AboutUs" element={<AboutUs />} />
 
-      <Route element={<ProtectedRoutes />}>
+      <Route element={<ProtectedRoutes />} loader={fetchUserData}>
         <Route path="/Auktionpage" element={<Auktionpage />} />
         <Route path="/MyPages" element={<MyPagesAppLayout />}>
           <Route index element={<MyPages />} />

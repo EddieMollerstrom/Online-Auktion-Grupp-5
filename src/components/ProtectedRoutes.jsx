@@ -1,7 +1,27 @@
-import { Outlet, Navigate } from "react-router-dom";
+import { useLoaderData, Outlet, Navigate } from "react-router-dom";
 
+// Loader function to fetch user data
+export const fetchUserData = async () => {
+  try {
+    const res = await fetch("/api/login");
+    if (res.ok) {
+      const userData = await res.json();
+      return userData;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    return null;
+  }
+};
+
+// ProtectedRoutes component
 const ProtectedRoutes = () => {
-  let auth = { token: true }; //Fetch user här istället från Databsen
+  const user = useLoaderData();
+
+  const auth = { token: user !== null };
+
   return auth.token ? <Outlet /> : <Navigate to="/LoginSignup" />;
 };
 
