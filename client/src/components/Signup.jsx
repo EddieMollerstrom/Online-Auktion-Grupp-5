@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -8,21 +7,36 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const newUser = {
-        userName: username,
-        email: email,
-        password: password,
-      };
-      await axios.post("http://localhost:3000/users", newUser);
 
-      setEmail("");
+    try {
+      const response = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      console.log("User created successfully");
+
+      // Reset form fields
       setUsername("");
+      setEmail("");
       setPassword("");
-      alert("User signed up successfully!");
+
+      // Handle success, e.g., redirect to login page
     } catch (error) {
-      console.error("Error signing up:", error);
-      alert("An error occurred while signing up.");
+      console.error("Error creating user:", error);
+      alert(error.message);
     }
   };
 
