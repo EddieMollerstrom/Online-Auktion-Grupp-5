@@ -41,10 +41,13 @@ export default function Signup() {
   };
 
   return (
-    <div className="signup-container bg-custom-white">
-      <h2 className="title-signup">SKAPA KONTO</h2>
+    <div className="flex-1 flex flex-col justify-center p-8 h-screen max-w-55 rounded-r-lg text-center relative bg-custom-white">
+      <h2 className="relative bottom-16 text-5xl font-bold text-black">
+        SKAPA KONTO
+      </h2>
       <form onSubmit={handleSubmit}>
         <input
+          className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-md text-lg font-bold placeholder-black"
           type="text"
           placeholder="Username"
           value={username}
@@ -55,6 +58,7 @@ export default function Signup() {
           required
         />
         <input
+          className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-md text-lg font-bold placeholder-black"
           type="email"
           placeholder="Email"
           value={email}
@@ -65,6 +69,7 @@ export default function Signup() {
           required
         />
         <input
+          className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-md text-lg font-bold placeholder-black"
           type="password"
           placeholder="Password"
           value={password}
@@ -74,7 +79,10 @@ export default function Signup() {
           }}
           required
         />
-        <button className="signup-btn bg-custom-yellow" type="submit">
+        <button
+          className="relative top-5 w-full px-6 py-4 text-white bg-custom-yellow rounded-full font-bold text-lg transition duration-300 ease-in-out hover:bg-yellow-500"
+          type="submit"
+        >
           Sign Up
         </button>
         <p className="relative top-20 break-words text-custom-green text-lg font-bold">

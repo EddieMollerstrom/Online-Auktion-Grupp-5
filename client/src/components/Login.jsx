@@ -34,10 +34,13 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container bg-custom-green">
-      <h2 className="title-login">VÄLKOMMEN TILLBAKA</h2>
-      <div className="login-position-handler">
+    <div className="flex-1 flex flex-col justify-center p-8 h-screen max-w-80 rounded-l-lg text-center relative bg-custom-green">
+      <h2 className="relative bottom-24 text-3xl font-bold text-white">
+        VÄLKOMMEN TILLBAKA
+      </h2>
+      <div className="relative bottom-5">
         <input
+          className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-md text-lg font-bold placeholder-black"
           type="text"
           placeholder="ANVÄNDARNAMN"
           value={username}
@@ -45,9 +48,9 @@ export default function Login() {
             setUsername(e.target.value);
             setMessage("");
           }}
-          required
         />
         <input
+          className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-md text-lg font-bold placeholder-black"
           type="password"
           placeholder="LÖSENORD"
           value={password}
@@ -55,13 +58,17 @@ export default function Login() {
             setPassword(e.target.value);
             setMessage("");
           }}
-          required
         />
       </div>
-      <button className="login-btn bg-custom-yellow" onClick={handleLogin}>
+      <button
+        className="w-full px-6 py-4 text-white bg-custom-yellow rounded-full font-bold text-lg transition duration-300 ease-in-out hover:bg-yellow-500"
+        onClick={handleLogin}
+      >
         LOGGA IN
       </button>
-      <p className="login-msg">{message}</p>
+      <p className="relative top-20 break-words text-custom-white text-lg font-bold">
+        {message}
+      </p>
     </div>
   );
 }
