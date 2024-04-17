@@ -8,9 +8,12 @@
       "img": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Indoor_Giraffe_House_Belfast_Zoo.jpg",
       "created": "2024-03-21T11:42:43.511Z",
       "ends": "2024-04-21T00:00:43.511Z",
-      "bidCount": 248,
+      "bidCount": 266,
+      "currentHighestBid": "2002",
       "price": 98543,
-      "shipping": "18 kr Frimärken"
+      "minimumBid": 200,
+      "shipping": "18 kr Frimärken",
+      "category": "Horse"
     },
     {
       "id": "2",
@@ -20,8 +23,10 @@
       "img": "https://zooplanet.se/wp-content/uploads/2021/08/Ekorre-850x478.jpg",
       "created": "2024-01-12T16:12:58.511Z",
       "ends": "2024-06-24T00:00:43.511Z",
-      "bidCount": 7,
+      "bidCount": 11,
+      "currentHighestBid": "4400",
       "price": 199,
+      "minimumBid": 200,
       "shipping": "70 kr Postnord"
     },
     {
@@ -33,13 +38,57 @@
       "created": "2024-01-12T16:12:58.511Z",
       "ends": "2024-06-24T00:00:43.511Z",
       "bidCount": 7,
-      "price": 199,
-      "shipping": "70 kr Postnord"
+      "price": 299,
+      "shipping": "70 kr Postnord",
+      "category": "Katt"
+    },
+    {
+      "id": "ed60",
+      "title": "Vakthund",
+      "description": "stor agressiv och försvarar ditt hem",
+      "endDate": "2024-11-01",
+      "startPrice": "200kr",
+      "buyoutPrice": "10000000",
+      "category": "Hund",
+      "img": "https://images.pexels.com/photos/3361739/pexels-photo-3361739.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3361739.jpg&fm=jpg"
     }
   ],
-
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+  "users": [
+    {
+      "id": "2",
+      "userName": "Oogway",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "id": "3",
+      "userName": "Shifu",
+      "email": "oogway@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "userName": "Po",
+      "email": "Po@gmail.com",
+      "password": "abc123",
+      "id": "SuNtyQr"
+    },
+    {
+      "userName": "Skarader",
+      "email": "lukasholmwolf@gmail.com",
+      "password": "abc123",
+      "id": "ndeKky2"
+    },
+    {
+      "userName": "hejhej",
+      "email": "hej@gmail.com",
+      "password": "hejhej",
+      "id": "xz9vOvP"
+    },
+    {
+      "id": "171e",
+      "userName": "valon",
+      "email": "valonahmeti95@outlook.com",
+      "password": "123"
+    }
   ]
 }
