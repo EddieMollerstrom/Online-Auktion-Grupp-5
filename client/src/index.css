@@ -33,11 +33,10 @@ header {
   height: calc(100vh - 90px);
 }
 
-  #contactContainer {
-    height: 717px;
-    width: 1120px;
-  }
-
+#contactContainer {
+  height: 717px;
+  width: 1120px;
+}
 
 /*LoginSignup*/
 
@@ -64,7 +63,6 @@ header {
     text-align: center;
 
     position: relative;
-    
 
     .login-position-handler {
       position: relative;
@@ -230,19 +228,6 @@ header {
   }
 }
 /*LoginSignup*/
-
-/*AboutUs*/
-
-.about-us-text {
-  font-family: monospace, sans-serif;
-  text-align: center;
-  padding: 20px 50px;
-  margin: 10px 40px;
-  font-weight: 700;
-  font-size: 1.15rem;
-  border-radius: 16px;
-}
-/*AboutUs*/
 
 #contactMainContainer {
   width: 100vw;
