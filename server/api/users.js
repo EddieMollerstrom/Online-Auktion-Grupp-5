@@ -1,4 +1,13 @@
 import User from "../Model/User.js";
+import crypto from "crypto";
+const salt = "detsaltigastesaltet";
+
+function getHash(password) {
+  let hash = crypto
+    .pbkdf2Sync(password, salt, 1000, 32, `sha512`)
+    .toString(`hex`);
+  return hash;
+}
 
 export default function (server, db) {
   // get all user
@@ -30,7 +39,7 @@ export default function (server, db) {
       const newUser = new User({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: getHash(req.body.password),
       });
 
       await newUser.save();
@@ -49,21 +58,26 @@ export default function (server, db) {
       if (req.session.login) {
         res.json({ message: "Det finns redan en användare inloggad." });
       } else {
-        const user = await User.findOne({
-          username: req.body.username,
-          password: req.body.password,
-        });
+        const user = await User.findOne(
+          {
+            username: req.body.username,
+            password: getHash(req.body.password),
+          },
+          "-password"
+        );
         if (user) {
           // Sparar den inloggade användaren i req.session.login
           req.session.login = user;
           console.log(req.session.login);
           res.json({ message: `Du har loggat in som ${user.username}.` });
         } else {
-          res.json({ message: "Fel användare eller lösenord." });
+          res.status(401).json({ message: "Fel användare eller lösenord." });
         }
       }
     } catch (error) {
-      res.status(500).json({ message: "Något gick fel." }, error);
+      res
+        .status(500)
+        .json({ message: "Något gick fel.", error: error.message });
     }
   });
 }

@@ -21,13 +21,12 @@ export default function Login() {
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message);
+      } else {
+        setUsername("");
+        setPassword("");
+
+        setMessage(`Välkommen ${username}`);
       }
-
-      setMessage("Login successful");
-
-      // Reset form fields
-      setUsername("");
-      setPassword("");
     } catch (error) {
       console.error("Error during login:", error);
       setMessage(error.message);
@@ -42,13 +41,21 @@ export default function Login() {
           type="text"
           placeholder="ANVÄNDARNAMN"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => {
+            setUsername(e.target.value);
+            setMessage("");
+          }}
+          required
         />
         <input
           type="password"
           placeholder="LÖSENORD"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setMessage("");
+          }}
+          required
         />
       </div>
       <button className="login-btn bg-custom-yellow" onClick={handleLogin}>
