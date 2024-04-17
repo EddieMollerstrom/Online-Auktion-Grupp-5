@@ -25,16 +25,15 @@ export default function Signup() {
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message);
+      } else {
+        setUsername("");
+        setEmail("");
+        setPassword("");
+
+        setMessage("Ny användare skapad!");
       }
 
-      setMessage("User created successfully");
-
       // Reset form fields
-      setUsername("");
-      setEmail("");
-      setPassword("");
-
-      // Handle success, e.g., redirect to login page
     } catch (error) {
       console.error("Error creating user:", error);
       setMessage(error.message);
