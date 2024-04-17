@@ -4,6 +4,7 @@ export default function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ export default function Signup() {
         throw new Error(errorData.message);
       }
 
-      console.log("User created successfully");
+      setMessage("User created successfully");
 
       // Reset form fields
       setUsername("");
@@ -36,7 +37,7 @@ export default function Signup() {
       // Handle success, e.g., redirect to login page
     } catch (error) {
       console.error("Error creating user:", error);
-      alert(error.message);
+      setMessage(error.message);
     }
   };
 
@@ -68,6 +69,9 @@ export default function Signup() {
         <button className="signup-btn bg-custom-yellow" type="submit">
           Sign Up
         </button>
+        <p className="relative top-20 break-words text-custom-green text-lg font-bold">
+          {message}
+        </p>
       </form>
     </div>
   );

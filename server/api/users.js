@@ -17,11 +17,14 @@ export default function (server, db) {
 
   server.post("/api/users", async (req, res) => {
     try {
-      const existingUser = await User.findOne({ email: req.body.email });
+      const existingUser = await User.findOne({
+        $or: [{ email: req.body.email }, { username: req.body.username }],
+      });
+
       if (existingUser) {
-        return res
-          .status(400)
-          .json({ message: "Användare med samma mail finns redan." });
+        return res.status(400).json({
+          message: "konto med samma användarnamn eller mail finns redan.",
+        });
       }
 
       const newUser = new User({
@@ -32,7 +35,7 @@ export default function (server, db) {
 
       await newUser.save();
 
-      res.status(201).json({ message: "User created successfully" });
+      res.status(201).json({ message: "Ny användare skapad." });
     } catch (error) {
       console.error("Error creating user:", error);
       res.status(500).json({ error: "Could not create user" });
