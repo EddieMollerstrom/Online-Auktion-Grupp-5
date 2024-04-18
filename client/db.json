@@ -53,6 +53,29 @@
       "img": "https://images.pexels.com/photos/3361739/pexels-photo-3361739.jpeg?cs=srgb&dl=pexels-goochie-poochie-grooming-3361739.jpg&fm=jpg"
     }
   ],
+  "animalCategories": [
+    {
+      "id": "1",
+      "name": "Rovdjur"
+      
+    },
+    {
+      "id": "2",
+      "name": "Dägdjur"
+      
+    },
+    {
+      "id": "3",
+      "name": "Dog"
+      
+      
+    },
+    {
+      "id": "4",
+      "name": "Other",
+      
+    }
+  ],
   "users": [
     {
       "id": "2",
