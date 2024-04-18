@@ -21,7 +21,7 @@ export default function (server, db) {
         description: req.body.description,
         tags: req.body.tags,
         img: req.body.img,
-        created: req.body.created,
+        created: new Date(),
         ends: req.body.ends,
         bidCount: req.body.bidCount,
         currentHighestBid: req.body.currentHighestBid,
@@ -43,8 +43,19 @@ export default function (server, db) {
   server.delete("/api/products/:id", async (req, res) => {
     const id = req.params.id;
 
-    const result = await Product.findByIdAndDelete(id);
+    await Product.findByIdAndDelete(id);
 
     res.status(204).send();
+  });
+
+  server.patch("/api/products/:id", async (req, res) => {
+    const id = req.params.id;
+
+    const updateBid = {
+      bidCount: req.body.bidCount,
+      currentHighestBid: req.body.currentHighestBid,
+    };
+
+    await Product.findByIdAndUpdate(id, updateBid);
   });
 }

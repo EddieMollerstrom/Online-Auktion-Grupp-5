@@ -4,8 +4,8 @@ function AuctionForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [ends, setEndDate] = useState("");
-  const [startPrice, setStartPrice] = useState("");
-  const [buyoutPrice, setBuyoutPrice] = useState("");
+  const [minimumBid, setminimumBid] = useState("");
+  const [price, setprice] = useState("");
   const [category, setCategory] = useState("");
   const [img, setImageURL] = useState("");
 
@@ -13,8 +13,8 @@ function AuctionForm() {
     title,
     description,
     ends,
-    startPrice,
-    buyoutPrice,
+    minimumBid,
+    price,
     category,
     img,
   };
@@ -81,24 +81,24 @@ function AuctionForm() {
             onChange={(event) => setEndDate(event.target.value)}
           />
 
-          <label htmlFor="startPrice">Start pris:</label>
+          <label htmlFor="minimumBid">Start pris:</label>
           <input
             type="text"
-            id="startPrice"
-            name="startPrice"
+            id="minimumBid"
+            name="minimumBid"
             className="text-black"
-            value={startPrice}
-            onChange={(event) => setStartPrice(event.target.value)}
+            value={minimumBid}
+            onChange={(event) => setminimumBid(event.target.value)}
           />
 
-          <label htmlFor="buyoutPrice">Utköps pris:</label>
+          <label htmlFor="price">Utköps pris:</label>
           <input
             type="text"
-            id="buyoutPrice"
-            name="buyoutPrice"
+            id="price"
+            name="price"
             className="text-black"
-            value={buyoutPrice}
-            onChange={(event) => setBuyoutPrice(event.target.value)}
+            value={price}
+            onChange={(event) => setprice(event.target.value)}
           />
 
           <label htmlFor="category">Kategori/Sökord:</label>
