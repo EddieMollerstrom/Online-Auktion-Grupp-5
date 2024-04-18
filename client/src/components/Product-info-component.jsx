@@ -3,7 +3,7 @@ import BidDialog from "./BidDialog.jsx";
 
 export default function ProductInfoComponent({ product }) {
   const {
-    id,
+    _id,
     img,
     tags,
     description,
@@ -120,7 +120,7 @@ export default function ProductInfoComponent({ product }) {
       </section>
 
       <BidDialog
-        productId={id}
+        productId={_id}
         bidCount={bidCount}
         currentHighestBid={currentHighestBid}
         minimumBid={minimumBid}

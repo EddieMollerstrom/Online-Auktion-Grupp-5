@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 export default function ProductCard(props) {
-  const { img, title, price, ends, bidCount, id } = props.product;
+  const { img, title, price, ends, bidCount, _id } = props.product;
 
   return (
     <>
-      <Link to={`/product-info/${id}`}>
+      <Link to={`/product-info/${_id}`}>
         <li className="flex flex-col gap-1 size-52">
           <img
             className="size-52 bg-contain aspect-square pointer-events-auto"
