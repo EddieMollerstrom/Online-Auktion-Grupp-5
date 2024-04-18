@@ -19,6 +19,7 @@ export const fetchUserData = async () => {
 // ProtectedRoutes component
 const ProtectedRoutes = () => {
   const user = useLoaderData();
+  console.log(user);
 
   const auth = { token: user !== null };
 
