@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { GlobalContext } from "../Globalcontext.jsx";
 
 export default function Header() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
+  const { isLoggedIn, setIsLoggedIn } = useContext(GlobalContext);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/api/login/");
-        setLoggedIn(true);
-
-        return res.json();
-      } catch (error) {
-        console.error("fel vid fetch", error);
-      }
-    };
-    fetchData();
-  }, []);
+    fetch("/api/login")
+      .then((response) => response.json())
+      .then((data) => {
+        setIsLoggedIn(data.isLoggedIn);
+      })
+      .catch((error) => {
+        console.error("Error fetching login status:", error);
+      });
+  }, [isLoggedIn]);
 
   const handleLogout = () => {
-    console.log("TEST");
-    fetch("/api/logout")
-      .then((res) => res.json())
+    fetch("/api/login", {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
       .then((data) => {
-        setLoggedIn(false);
+        setIsLoggedIn(null);
       })
       .catch((error) => {
         console.error("Error logging out:", error);
@@ -41,7 +39,7 @@ export default function Header() {
           <Link to={"/AboutUs"}>Om oss</Link>
           <Link to={"/Contact"}>Kontakt</Link>
           <Link to={"/MyPages"}>Mina sidor</Link>
-          {loggedIn ? (
+          {isLoggedIn ? (
             <button
               onClick={handleLogout}
               className="bg-custom-yellow h-12 w-40 flex place-content-center items-center rounded-full text-custom-green"
@@ -49,6 +47,7 @@ export default function Header() {
               Logga Ut
             </button>
           ) : (
+            // Render login link if user is not logged in
             <Link
               to={"/LoginSignup"}
               className="bg-custom-yellow h-12 w-40 flex place-content-center items-center rounded-full text-custom-green"
