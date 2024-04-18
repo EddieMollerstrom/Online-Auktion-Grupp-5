@@ -10,6 +10,7 @@ import Myobjects from "../pages/Myobjects.jsx";
 import MyPagesSavedObjects from "../pages/MyPagesSaved.jsx";
 import LoginSignup from "../pages/LoginSignup.jsx";
 import AboutUs from "../pages/AboutUs.jsx";
+import CartProvider from "../pages/CartContext.jsx";
 
 export default function Router() {
   return (
