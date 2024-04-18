@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function AuctionForm() {
-
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [startPrice, setStartPrice] = useState('');
-  const [buyoutPrice, setBuyoutPrice] = useState('');
-  const [category, setCategory] = useState('');
-  const [img, setImageURL] = useState('');
-
-
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [startPrice, setStartPrice] = useState("");
+  const [buyoutPrice, setBuyoutPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [img, setImageURL] = useState("");
 
   const formData = {
     title,
@@ -22,45 +19,29 @@ function AuctionForm() {
     img,
   };
 
-  
   const handleSubmit = async (event) => {
-
     try {
       const response = await fetch(`/api/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      })
-  
+        body: JSON.stringify(formData),
+      });
+
       if (response.ok) {
-        const result = await response.json()
+        const result = await response.json();
         console.log(result);
         window.location.reload();
-     
-  
       } else {
-        console.log('statuskod:', response);
-       
-  
+        console.log("statuskod:", response);
       }
-  
     } catch (error) {
-      console.error('Något gick fel:', error);
+      console.error("Något gick fel:", error);
     }
-  
-  
-  
 
-
-  
     event.preventDefault();
 
-
-  
-    console.log('Formulärdata:', formData);
+    console.log("Formulärdata:", formData);
   };
-
- 
 
   return (
     <div className="flex justify-center min-h-screen p-4">
@@ -79,7 +60,7 @@ function AuctionForm() {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
-  
+
           <label htmlFor="description">Beskrivning:</label>
           <textarea
             id="description"
@@ -89,7 +70,7 @@ function AuctionForm() {
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           ></textarea>
-  
+
           <label htmlFor="endDate">Slutdatum för Auktion:</label>
           <input
             type="text"
@@ -99,7 +80,7 @@ function AuctionForm() {
             value={endDate}
             onChange={(event) => setEndDate(event.target.value)}
           />
-  
+
           <label htmlFor="startPrice">Start pris:</label>
           <input
             type="text"
@@ -109,7 +90,7 @@ function AuctionForm() {
             value={startPrice}
             onChange={(event) => setStartPrice(event.target.value)}
           />
-  
+
           <label htmlFor="buyoutPrice">Utköps pris:</label>
           <input
             type="text"
@@ -119,7 +100,7 @@ function AuctionForm() {
             value={buyoutPrice}
             onChange={(event) => setBuyoutPrice(event.target.value)}
           />
-  
+
           <label htmlFor="category">Kategori/Sökord:</label>
           <input
             type="text"
@@ -141,10 +122,10 @@ function AuctionForm() {
             name="img"
             className="text-black"
             placeholder="Ange bildens URL"
-            value={img} 
-            onChange={(event) => setImageURL(event.target.value)} 
+            value={img}
+            onChange={(event) => setImageURL(event.target.value)}
           />
-  
+
           <input
             type="button"
             onClick={handleSubmit}
@@ -155,7 +136,6 @@ function AuctionForm() {
       </div>
     </div>
   );
-  
 }
 
 export default AuctionForm;

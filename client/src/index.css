@@ -101,19 +101,7 @@ header {
     }
   }
 }
-
-/*AboutUs*/
-
-.about-us-text {
-  font-family: monospace, sans-serif;
-  text-align: center;
-  padding: 20px 50px;
-  margin: 10px 40px;
-  font-weight: 700;
-  font-size: 1.15rem;
-  border-radius: 16px;
-}
-/*AboutUs*/
+/*LoginSignup*/
 
 #contactMainContainer {
   width: 100vw;

@@ -1,32 +1,31 @@
+import { useLoaderData, useNavigation } from "react-router-dom";
 import ProductListWithFilter from "../components/ProductListWithFilter.jsx";
-import { useEffect, useState } from "react";
+
+export const fetchProducts = async () => {
+  try {
+    const res = await fetch("/api/products/");
+    return res.json();
+  } catch (error) {
+    console.error("Fel vid fetch", error);
+  }
+};
 
 export default function Home() {
-  const [products, setProducts] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const products = useLoaderData();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/products/");
-        const data = await response.json();
-
-        setProducts(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Fel vid fetch", error);
-      }
-    };
-    fetchData();
-  }, []);
+  const navigation = useNavigation();
+  /*const loading = loader ? loader.isLoading() : false;   */
+  if (navigation.state === "loading") {
+    return (
+      <p className="text-2xl text-custom-grey flex flex-col text-l uppercase tracking-widest font-normal place-items-center mt-6">
+        Laddar...
+      </p>
+    );
+  }
 
   return (
     <>
-      {loading ? (
-        <p>Laddar...</p>
-      ) : (
-        <ProductListWithFilter products={products} />
-      )}
+      <ProductListWithFilter products={products} />
     </>
   );
 }
