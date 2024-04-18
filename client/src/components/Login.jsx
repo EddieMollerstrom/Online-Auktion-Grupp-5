@@ -22,10 +22,11 @@ export default function Login() {
         const errorData = await response.json();
         throw new Error(errorData.message);
       } else {
+        const errorData = await response.json();
         setUsername("");
         setPassword("");
 
-        setMessage(`Välkommen ${username}`);
+        setMessage(errorData.message);
       }
     } catch (error) {
       console.error("Error during login:", error);
