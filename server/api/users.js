@@ -94,4 +94,18 @@ export default function (server, db) {
       res.status(400).json({ isLoggedIn: false });
     }
   });
+
+  // logga ut user
+
+  server.delete("/api/login", async (req, res) => {
+    if (req.session.login) {
+      const user = await User.findById(req.session.login);
+      delete req.session.login;
+      res.status(200).json({ message: "Hejdå" });
+    } else {
+      res.status(400).json({
+        message: "Ingen är inloggad",
+      });
+    }
+  });
 }
