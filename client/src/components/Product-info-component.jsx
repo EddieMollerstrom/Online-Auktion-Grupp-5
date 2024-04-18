@@ -3,7 +3,7 @@ import BidDialog from "./BidDialog.jsx";
 
 export default function ProductInfoComponent({ product }) {
   const {
-    id,
+    _id,
     img,
     tags,
     description,
@@ -90,10 +90,7 @@ export default function ProductInfoComponent({ product }) {
               >
                 LÄGG BUD
               </button>
-              <button
-                className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80"
-                onClick={() => document.getElementById("buyDialog").showModal()}
-              >
+              <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
                 KÖP NU
               </button>
               <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">
@@ -120,7 +117,7 @@ export default function ProductInfoComponent({ product }) {
       </section>
 
       <BidDialog
-        productId={id}
+        productId={_id}
         bidCount={bidCount}
         currentHighestBid={currentHighestBid}
         minimumBid={minimumBid}

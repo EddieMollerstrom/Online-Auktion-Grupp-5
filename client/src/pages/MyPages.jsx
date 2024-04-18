@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import ProductList from "../components/ProductList.jsx";
 
 export default function MyPages() {
-  const [userData, setUserData] = useState({ currentSales: [], sold: [], notSold: [], });
+  const [userData, setUserData] = useState({
+    currentSales: [],
+    sold: [],
+    notSold: [],
+  });
   const values = {
     title: "AKTIVA ANNONSER:",
   };
@@ -12,7 +16,7 @@ export default function MyPages() {
       try {
         const response = await fetch("/api/testUsers");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setUserData(data);

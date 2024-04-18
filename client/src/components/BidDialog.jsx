@@ -26,7 +26,7 @@ export default function BidDialog({
         console.log(result);
 
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Något gick fel");
         }
       } catch (error) {
         console.error("There was an error updating bid count:", error);
