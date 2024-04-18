@@ -25,7 +25,13 @@ export default function ProductInfoPage() {
 
   return (
     <>
-      {loading ? <p>Laddar...</p> : <ProductInfoComponent product={product} />}
+      {loading ? (
+        <p className="text-2xl text-custom-grey flex flex-col text-l uppercase tracking-widest font-normal place-items-center mt-6 ">
+          Laddar...
+        </p>
+      ) : (
+        <ProductInfoComponent product={product} />
+      )}
     </>
   );
 }
