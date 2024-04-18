@@ -56,7 +56,9 @@ export default function (server, db) {
   server.post("/api/login", async (req, res) => {
     try {
       if (req.session.login) {
-        res.json({ message: "Det finns redan en användare inloggad." });
+        res
+          .status(406)
+          .json({ message: "Det finns redan en användare inloggad." });
       } else {
         const user = await User.findOne(
           {
@@ -69,7 +71,9 @@ export default function (server, db) {
           // Sparar den inloggade användaren i req.session.login
           req.session.login = user;
           console.log(req.session.login);
-          res.json({ message: `Du har loggat in som ${user.username}.` });
+          res
+            .status(200)
+            .json({ message: `Du har loggat in som ${user.username}.` });
         } else {
           res.status(401).json({ message: "Fel användare eller lösenord." });
         }
@@ -78,6 +82,16 @@ export default function (server, db) {
       res
         .status(500)
         .json({ message: "Något gick fel.", error: error.message });
+    }
+  });
+
+  // kolla om någon är inloggad
+
+  server.get("/api/login", async (req, res) => {
+    if (req.session.login) {
+      res.json({ isLoggedIn: true, _id: req.session.login._id });
+    } else {
+      res.json({ isLoggedIn: false });
     }
   });
 }
