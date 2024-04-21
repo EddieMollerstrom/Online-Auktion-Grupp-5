@@ -119,7 +119,7 @@ function AuctionForm() {
                 type="checkbox"
                 checked={däggdjur}
                 value="däggdjur"
-                onChange={() => setDäggdjur(true)}
+                onChange={() => setDäggdjur(!däggdjur)}
               />
             </div>
 
@@ -129,7 +129,7 @@ function AuctionForm() {
                 type="checkbox"
                 checked={kräldjur}
                 id="kräldjur"
-                onChange={() => setKräldjur(true)}
+                onChange={() => setKräldjur(!kräldjur)}
               />
             </div>
 
@@ -139,7 +139,7 @@ function AuctionForm() {
                 type="checkbox"
                 checked={fågel}
                 id="fågel"
-                onChange={() => setFågel(true)}
+                onChange={() => setFågel(!fågel)}
               />
             </div>
 
@@ -149,7 +149,7 @@ function AuctionForm() {
                 type="checkbox"
                 checked={rovdjur}
                 id="rovdjur"
-                onChange={() => setRovdjur(true)}
+                onChange={() => setRovdjur(!rovdjur)}
               />
             </div>
           </section>
