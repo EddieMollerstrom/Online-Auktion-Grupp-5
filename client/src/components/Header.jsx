@@ -16,16 +16,20 @@ export default function Header() {
   }, [isLoggedIn]);
 
   const handleLogout = () => {
-    fetch("/api/login", {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoggedIn(null);
+    const logout = window.confirm("Säker på att du vill logga ut?");
+    if (logout) {
+      fetch("/api/login", {
+        method: "DELETE",
       })
-      .catch((error) => {
-        console.error("Error logging out:", error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          setIsLoggedIn(null);
+          window.location.href = "/LoginSignup";
+        })
+        .catch((error) => {
+          console.error("Error logging out:", error);
+        });
+    }
   };
 
   return (
