@@ -10,7 +10,10 @@ export default function BidDialog({
   const [badBidInput, setBadBidInput] = useState("");
 
   const updateBidCount = async () => {
-    if (bidInput > currentHighestBid && bidInput > minimumBid) {
+    if (
+      (bidInput > currentHighestBid && bidInput > minimumBid) ||
+      (bidInput > minimumBid && bidCount == 0)
+    ) {
       try {
         const response = await fetch(`/api/products/${productId}`, {
           method: "PATCH",

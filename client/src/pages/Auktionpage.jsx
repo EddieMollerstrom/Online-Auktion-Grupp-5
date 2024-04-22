@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AuctionForm() {
+function AuctionForm({ bidCount }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [ends, setEndDate] = useState("");

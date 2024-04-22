@@ -7,7 +7,7 @@ const productsSchema = new mongoose.Schema({
   img: String,
   created: Date,
   ends: { type: Date, required: true },
-  bidCount: Number,
+  bidCount: { type: Number, default: 0 },
   currentHighestBid: Number,
   price: String,
   minimumBid: Number,
