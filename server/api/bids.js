@@ -3,35 +3,42 @@ import Product from "../Model/Product.js";
 import User from "../Model/User.js";
 
 export default function (server, db) {
-  server.post("/api/bids", async (req, res) => {
+  server.post("/api/bids/:id", async (req, res) => {
     try {
-      const { ProductId } = req.body;
-      console.log(ProductId);
-
-      const product = await Product.findById(ProductId);
-      console.log(product);
+      console.log(req.params.id);
+      const product = await Product.findById(req.params.id);
 
       if (!product) {
         return res.status(404).json({ message: "Auktionen hittades inte." });
       }
 
+      const user = await User.findById(req.body.userId);
+
       const bid = await Bid.create({
-        userId: req.body.id,
-        productId: req.body.productId,
+        userId: user._id,
+        productId: product._id,
+        bidAmount: req.body.bidAmount,
       });
 
-      const user = await User.findById(id);
       user.bids.push(bid);
+
+      await Product.updateOne({ _id: product }, { $inc: { bids: +1 } });
+
+      await Product.updateOne(
+        { _id: product },
+        { currentHighestBid: req.body.bidAmount }
+      );
+
       await user.save();
-
-      await Product.updateOne({ _id: ProductId }, { $inc: { bids: +1 } });
-      await Product.save;
-
       console.log("Bud skapat");
       res.status(201).json(bid);
     } catch (error) {
       console.error("Fel vid köp skapande av bud");
-      res.status(500).json({ error: "Serverfel." });
+      res.status(500).json({ error: "Fel vid budivning" });
     }
+  });
+
+  server.get("/api/bids", async (req, res) => {
+    res.json(await Bid.find());
   });
 }

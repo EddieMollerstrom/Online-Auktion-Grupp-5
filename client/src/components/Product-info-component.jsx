@@ -10,7 +10,7 @@ export default function ProductInfoComponent({ product }) {
     title,
     created,
     ends,
-    bidCount,
+    bids,
     price,
     shipping,
     currentHighestBid,
