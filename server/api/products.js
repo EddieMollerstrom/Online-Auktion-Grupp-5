@@ -23,8 +23,6 @@ export default function (server, db) {
         img: req.body.img,
         created: new Date(),
         ends: req.body.ends,
-        bidCount: req.body.bidCount,
-        currentHighestBid: req.body.currentHighestBid,
         price: req.body.price,
         minimumBid: req.body.minimumBid,
         shipping: req.body.shipping,
@@ -51,11 +49,14 @@ export default function (server, db) {
   server.patch("/api/products/:id", async (req, res) => {
     const id = req.params.id;
 
-    const updateBid = {
-      bidCount: req.body.bidCount,
-      currentHighestBid: req.body.currentHighestBid,
+    const bid = {
+      userId: req.session.login,
+      bidAmount: req.body.bidAmount,
     };
 
-    await Product.findByIdAndUpdate(id, updateBid);
+    const productBid = await Product.findById(id);
+    productBid.bids.push(bid);
+    const savedProduct = await productBid.save();
+    res.status(201).json(savedProduct);
   });
 }

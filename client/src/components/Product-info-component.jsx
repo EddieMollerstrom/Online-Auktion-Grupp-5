@@ -20,6 +20,13 @@ export default function ProductInfoComponent({ product }) {
   const [tag, setTags] = useState("");
   const [showCreatedDate, setShowCreatedDate] = useState("");
   const [showEndDate, setShowEndDate] = useState("");
+  const [updateBid, setUpdateBid] = useState(bids[bids.length - 1].bidAmount);
+
+  function checkLogin() {
+    if (req.session.login) {
+      console.log("logged in");
+    }
+  }
 
   const formatTime = (time) => {
     const options = { weekday: "long" };
@@ -73,13 +80,14 @@ export default function ProductInfoComponent({ product }) {
             <div>
               <p>{`${showCreatedDate.objectDayOfTheWeek} ${showCreatedDate.objectDate} ${showCreatedDate.objectMonth} ${showCreatedDate.objectHour}:${showCreatedDate.objectMinutes}`}</p>
               <h2 className="font-bold text-3xl">{title}</h2>
-              <p className="font-medium text-lg">{bidCount} Bud</p>
+              <p className="font-medium text-lg">{bids.length} Bud</p>
               <h2 className="font-semi-bold mb-5 text-2xl">
                 Utköps pris: {price}kr
               </h2>
               <p className="font-medium text-lg">Lägsta bud: {minimumBid}kr</p>
               <p className="font-medium text-lg">
-                Nuvarande högsta bud: {currentHighestBid}kr
+                Nuvarande högsta bud: {updateBid}
+                kr
               </p>
             </div>
 
@@ -90,7 +98,10 @@ export default function ProductInfoComponent({ product }) {
               >
                 LÄGG BUD
               </button>
-              <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
+              <button
+                className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80"
+                onClick={checkLogin}
+              >
                 KÖP NU
               </button>
               <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">
@@ -118,7 +129,7 @@ export default function ProductInfoComponent({ product }) {
 
       <BidDialog
         productId={_id}
-        bidCount={bidCount}
+        bids={bids}
         currentHighestBid={currentHighestBid}
         minimumBid={minimumBid}
       />

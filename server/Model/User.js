@@ -7,7 +7,7 @@ const usersSchema = new mongoose.Schema({
   bids: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Bid",
+      ref: "Product",
     },
   ],
 });

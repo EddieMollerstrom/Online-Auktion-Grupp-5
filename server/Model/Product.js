@@ -7,8 +7,18 @@ const productsSchema = new mongoose.Schema({
   img: String,
   created: Date,
   ends: { type: Date, required: true },
-  bids: Number,
-  currentHighestBid: Number,
+  bids: [
+    {
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users",
+        required: true,
+      },
+      bidAmount: {
+        Number,
+      },
+    },
+  ],
   price: String,
   minimumBid: Number,
   shipping: String,
