@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import BidDialog from "./BidDialog.jsx";
+import { GlobalContext } from "../Globalcontext.jsx";
 
 export default function ProductInfoComponent({ product }) {
   const {
@@ -17,16 +18,12 @@ export default function ProductInfoComponent({ product }) {
     minimumBid,
   } = product;
 
+  const { isLoggedIn } = useContext(GlobalContext);
+
   const [tag, setTags] = useState("");
   const [showCreatedDate, setShowCreatedDate] = useState("");
   const [showEndDate, setShowEndDate] = useState("");
   const [updateBid, setUpdateBid] = useState(bids[bids.length - 1].bidAmount);
-
-  function checkLogin() {
-    if (req.session.login) {
-      console.log("logged in");
-    }
-  }
 
   const formatTime = (time) => {
     const options = { weekday: "long" };
@@ -98,10 +95,7 @@ export default function ProductInfoComponent({ product }) {
               >
                 LÄGG BUD
               </button>
-              <button
-                className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80"
-                onClick={checkLogin}
-              >
+              <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
                 KÖP NU
               </button>
               <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">
@@ -126,13 +120,16 @@ export default function ProductInfoComponent({ product }) {
           </div>
         </section>
       </section>
-
-      <BidDialog
-        productId={_id}
-        bids={bids}
-        currentHighestBid={currentHighestBid}
-        minimumBid={minimumBid}
-      />
+      {isLoggedIn ? (
+        <BidDialog
+          productId={_id}
+          bids={bids}
+          currentHighestBid={currentHighestBid}
+          minimumBid={minimumBid}
+        />
+      ) : (
+        console.log("Not logged in")
+      )}
     </>
   );
 }

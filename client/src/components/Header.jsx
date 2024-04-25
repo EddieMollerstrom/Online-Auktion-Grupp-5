@@ -1,6 +1,37 @@
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { GlobalContext } from "../Globalcontext.jsx";
 
 export default function Header() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(GlobalContext);
+  useEffect(() => {
+    fetch("/api/login")
+      .then((response) => response.json())
+      .then((data) => {
+        setIsLoggedIn(data.isLoggedIn);
+      })
+      .catch((error) => {
+        console.error("Error fetching login status:", error);
+      });
+  }, [isLoggedIn]);
+
+  const handleLogout = () => {
+    const logout = window.confirm("Säker på att du vill logga ut?");
+    if (logout) {
+      fetch("/api/login", {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setIsLoggedIn(null);
+          window.location.href = "/LoginSignup";
+        })
+        .catch((error) => {
+          console.error("Error logging out:", error);
+        });
+    }
+  };
+
   return (
     <>
       <header className="bg-custom-green flex place-content-between h-100 px-44 items-center">
@@ -12,12 +43,22 @@ export default function Header() {
           <Link to={"/AboutUs"}>Om oss</Link>
           <Link to={"/Contact"}>Kontakt</Link>
           <Link to={"/MyPages"}>Mina sidor</Link>
-          <Link
-            to={"/LoginSignup"}
-            className="bg-custom-yellow h-12 w-40 flex place-content-center items-center rounded-full text-custom-green"
-          >
-            Logga In
-          </Link>
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="bg-custom-yellow h-12 w-40 flex place-content-center items-center rounded-full text-custom-green"
+            >
+              Logga Ut
+            </button>
+          ) : (
+            // Render login link if user is not logged in
+            <Link
+              to={"/LoginSignup"}
+              className="bg-custom-yellow h-12 w-40 flex place-content-center items-center rounded-full text-custom-green"
+            >
+              Logga In
+            </Link>
+          )}
         </nav>
       </header>
     </>
