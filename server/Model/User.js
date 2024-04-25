@@ -4,10 +4,10 @@ const usersSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
-  bids: [
+  userBids: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+      ref: "products",
     },
   ],
 });

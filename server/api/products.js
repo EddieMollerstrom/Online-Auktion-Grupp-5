@@ -1,4 +1,5 @@
 import Product from "../Model/Product.js";
+import User from "../Model/User.js";
 
 export default function (server, db) {
   //Hämtar alla produkter
@@ -55,8 +56,17 @@ export default function (server, db) {
     };
 
     const productBid = await Product.findById(id);
+
     productBid.bids.push(bid);
+
     const savedProduct = await productBid.save();
-    res.status(201).json(savedProduct);
+
+    const userBid = await User.findById(req.session.login);
+
+    userBid.userBids.push(id);
+
+    const savedUserBid = await userBid.save();
+
+    res.status(201).json({ savedProduct, savedUserBid });
   });
 }
