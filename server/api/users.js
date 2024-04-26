@@ -17,7 +17,7 @@ export default function (server, db) {
 
   // get one user
   server.get("/api/users/:id", async (req, res) => {
-    const id = req.param.id;
+    const id = req.params.id;
     const user = await User.findById(id);
     res.json(user);
   });
@@ -71,12 +71,10 @@ export default function (server, db) {
           // Sparar den inloggade användaren i req.session.login
           req.session.login = user;
           console.log(req.session.login);
-          res
-            .status(200)
-            .json({
-              message: `Du har loggat in som ${user.username}.`,
-              user: user,
-            });
+          res.status(200).json({
+            message: `Du har loggat in som ${user.username}.`,
+            user: user,
+          });
         } else {
           res.status(401).json({ message: "Fel användare eller lösenord." });
         }

@@ -7,15 +7,18 @@ const productsSchema = new mongoose.Schema({
   img: String,
   created: Date,
   ends: { type: Date, required: true },
-  bids: [
-    {
-      userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
+  bids: {
+    type: [
+      {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "users",
+        },
+        bidAmount: { type: Number, default: 0 },
       },
-      bidAmount: Number,
-    },
-  ],
+    ],
+    default: [0],
+  },
   price: String,
   minimumBid: Number,
   shipping: String,

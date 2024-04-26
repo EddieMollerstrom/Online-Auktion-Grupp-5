@@ -14,14 +14,14 @@ export default function BidDialog({ productId, bids, minimumBid }) {
           },
           body: JSON.stringify({ bidAmount: bidInput }),
         });
-        const result = response.json();
+        const result = await response.json();
         console.log(result);
 
         if (!response.ok) {
           throw new Error("Något gick fel");
         }
       } catch (error) {
-        console.error("There was an error updating bid count:", error);
+        console.error("There was an error updating bidAmount:", error);
       }
     } else {
       setBadBidInput("Du måste lägga ett högre bud en nuvarande");

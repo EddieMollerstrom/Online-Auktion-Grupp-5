@@ -33,7 +33,15 @@ export default function (server, db) {
 
       const savedProduct = await newProduct.save();
 
-      res.status(201).json(savedProduct);
+      const id = savedProduct.id;
+
+      const userCreatedProduct = await User.findById(req.session.login);
+
+      userCreatedProduct.createdProducts.push(id);
+
+      const savedUserCreatedProduct = await userCreatedProduct.save();
+
+      res.status(201).json({ savedProduct, savedUserCreatedProduct });
     } catch (err) {
       res.status(500).json({ message: "Något gick fel." }, err);
     }
@@ -49,25 +57,29 @@ export default function (server, db) {
   });
 
   server.patch("/api/products/:id", async (req, res) => {
-    const id = req.params.id;
+    try {
+      const id = req.params.id;
 
-    const bid = {
-      userId: req.session.login,
-      bidAmount: req.body.bidAmount,
-    };
+      const bid = {
+        userId: req.session.login,
+        bidAmount: req.body.bidAmount,
+      };
 
-    const productBid = await Product.findById(id);
+      const productBid = await Product.findById(id);
 
-    productBid.bids.push(bid);
+      productBid.bids.push(bid);
 
-    const savedProduct = await productBid.save();
+      const savedProduct = await productBid.save();
 
-    const userBid = await User.findById(req.session.login);
+      const userBid = await User.findById(req.session.login);
 
-    userBid.userBids.push(savedProduct);
+      userBid.userBids.push(id);
 
-    const savedUserBid = await userBid.save();
+      const savedUserBid = await userBid.save();
 
-    res.status(201).json({ savedProduct, savedUserBid });
+      res.status(201).json({ savedProduct, savedUserBid });
+    } catch (error) {
+      res.status(500).json({ message: "Något gick fel", error });
+    }
   });
 }
