@@ -154,12 +154,6 @@ function AuctionForm({ bidCount }) {
             </div>
           </section>
 
-          <label
-            htmlFor="imageURL"
-            className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer"
-          >
-            Bild URL
-          </label>
           <input
             type="text"
             id="img"
