@@ -16,7 +16,7 @@ export default function ProductCard(props) {
       <Link to={`/product-info/${_id}`}>
         <li className="flex flex-col gap-1 shadow md:shadow-lg rounded-md">
           <img
-            className="size-52 bg-contain aspect-square pointer-events-auto rounded-t-md"
+            className=" bg-contain aspect-square pointer-events-auto rounded-t-md"
             src={img}
           />
           <div className="flex flex-col gap-3 p-1.5 items-start ">
