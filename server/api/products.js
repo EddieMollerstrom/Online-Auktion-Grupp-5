@@ -17,6 +17,7 @@ export default function (server, db) {
   //Skapar ett event
   server.post("/api/products", async (req, res) => {
     try {
+      console.log(req.body);
       const newProduct = new Product({
         title: req.body.title,
         description: req.body.description,
@@ -34,7 +35,7 @@ export default function (server, db) {
 
       res.status(201).json(savedProduct);
     } catch (err) {
-      res.status(400).json({ message: "Något gick fel." }, err);
+      res.status(500).json({ message: "Något gick fel." }, err);
     }
   });
 
@@ -63,7 +64,7 @@ export default function (server, db) {
 
     const userBid = await User.findById(req.session.login);
 
-    userBid.userBids.push(id);
+    userBid.userBids.push(savedProduct);
 
     const savedUserBid = await userBid.save();
 
