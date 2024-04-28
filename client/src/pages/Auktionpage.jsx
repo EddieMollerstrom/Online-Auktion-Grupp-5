@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 
-function AuctionForm() {
+function AuctionForm({ bidCount }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [startPrice, setStartPrice] = useState("");
-  const [buyoutPrice, setBuyoutPrice] = useState("");
-  const [category, setCategory] = useState("");
+  const [ends, setEndDate] = useState("");
+  const [minimumBid, setminimumBid] = useState("");
+  const [price, setprice] = useState("");
   const [img, setImageURL] = useState("");
+
+  const [däggdjur, setDäggdjur] = useState(false);
+  const [kräldjur, setKräldjur] = useState(false);
+  const [fågel, setFågel] = useState(false);
+  const [rovdjur, setRovdjur] = useState(false);
+
+  const tags = [
+    däggdjur ? "Däggdjur" : "",
+    kräldjur ? "Kräldjur" : "",
+    fågel ? "Fågel" : "",
+    rovdjur ? "Rovdjur" : "",
+  ].filter((tag) => tag !== "");
 
   const formData = {
     title,
     description,
-    endDate,
-    startPrice,
-    buyoutPrice,
-    category,
+    ends,
+    minimumBid,
+    price,
     img,
+    tags,
   };
 
   const handleSubmit = async (event) => {
@@ -30,7 +41,6 @@ function AuctionForm() {
       if (response.ok) {
         const result = await response.json();
         console.log(result);
-        window.location.reload();
       } else {
         console.log("statuskod:", response);
       }
@@ -71,51 +81,79 @@ function AuctionForm() {
             onChange={(event) => setDescription(event.target.value)}
           ></textarea>
 
-          <label htmlFor="endDate">Slutdatum för Auktion:</label>
+          <label htmlFor="ends">Slutdatum för Auktion:</label>
           <input
-            type="text"
-            id="endDate"
-            name="endDate"
+            type="datetime-local"
+            id="ends"
+            name="ends"
             className="text-black"
-            value={endDate}
+            value={ends}
             onChange={(event) => setEndDate(event.target.value)}
           />
 
-          <label htmlFor="startPrice">Start pris:</label>
+          <label htmlFor="minimumBid">Start pris:</label>
           <input
             type="text"
-            id="startPrice"
-            name="startPrice"
+            id="minimumBid"
+            name="minimumBid"
             className="text-black"
-            value={startPrice}
-            onChange={(event) => setStartPrice(event.target.value)}
+            value={minimumBid}
+            onChange={(event) => setminimumBid(event.target.value)}
           />
 
-          <label htmlFor="buyoutPrice">Utköps pris:</label>
+          <label htmlFor="price">Utköps pris:</label>
           <input
             type="text"
-            id="buyoutPrice"
-            name="buyoutPrice"
+            id="price"
+            name="price"
             className="text-black"
-            value={buyoutPrice}
-            onChange={(event) => setBuyoutPrice(event.target.value)}
+            value={price}
+            onChange={(event) => setprice(event.target.value)}
           />
 
-          <label htmlFor="category">Kategori/Sökord:</label>
-          <input
-            type="text"
-            id="category"
-            name="category"
-            className="text-black"
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-          />
-          <label
-            htmlFor="imageURL"
-            className="bg-custom-yellow h-8 w-60 flex justify-center items-center rounded-full text-custom-green cursor-pointer"
-          >
-            Bild URL
-          </label>
+          <section className="flex gap-5">
+            <div className="flex gap-1">
+              <label htmlFor="däggdjur">Däggdjur</label>
+              <input
+                id="däggdjur"
+                type="checkbox"
+                checked={däggdjur}
+                value="däggdjur"
+                onChange={() => setDäggdjur(!däggdjur)}
+              />
+            </div>
+
+            <div className="flex gap-1">
+              <label htmlFor="kräldjur">Kräldjur</label>
+              <input
+                type="checkbox"
+                checked={kräldjur}
+                id="kräldjur"
+                onChange={() => setKräldjur(!kräldjur)}
+              />
+            </div>
+
+            <div className="flex gap-1">
+              <label htmlFor="fågel">Fågel</label>
+              <input
+                type="checkbox"
+                checked={fågel}
+                id="fågel"
+                onChange={() => setFågel(!fågel)}
+              />
+            </div>
+
+            <div className="flex gap-1">
+              <label htmlFor="rovdjur">Rovdjur</label>
+              <input
+                type="checkbox"
+                checked={rovdjur}
+                id="rovdjur"
+                onChange={() => setRovdjur(!rovdjur)}
+              />
+            </div>
+          </section>
+
           <input
             type="text"
             id="img"

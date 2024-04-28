@@ -1,6 +1,29 @@
 import { useEffect, useState } from "react";
 import BidDialog from "./BidDialog.jsx";
 
+export function formatTime(time) {
+  const options = { weekday: "long" };
+  const formattedTime = new Date(time);
+  const month = formattedTime
+    .toLocaleDateString("sv-SE", { month: "short" })
+    .toUpperCase();
+  const date = formattedTime.toLocaleDateString("sv-SE", { day: "numeric" });
+  const dayOfTheWeek = new Intl.DateTimeFormat("sv-SE", options)
+    .format(formattedTime)
+    .replace("dag", "")
+    .toUpperCase();
+  const hour = formattedTime.getHours().toLocaleString("sv-SE");
+  const minutes = formattedTime.getMinutes().toLocaleString("sv-SE");
+
+  return {
+    objectDayOfTheWeek: dayOfTheWeek,
+    objectDate: date,
+    objectMonth: month,
+    objectHour: hour,
+    objectMinutes: minutes,
+  };
+}
+
 export default function ProductInfoComponent({ product }) {
   const {
     _id,
@@ -20,29 +43,6 @@ export default function ProductInfoComponent({ product }) {
   const [tag, setTags] = useState("");
   const [showCreatedDate, setShowCreatedDate] = useState("");
   const [showEndDate, setShowEndDate] = useState("");
-
-  const formatTime = (time) => {
-    const options = { weekday: "long" };
-    const formattedTime = new Date(time);
-    const month = formattedTime
-      .toLocaleDateString("sv-SE", { month: "short" })
-      .toUpperCase();
-    const date = formattedTime.toLocaleDateString("sv-SE", { day: "numeric" });
-    const dayOfTheWeek = new Intl.DateTimeFormat("sv-SE", options)
-      .format(formattedTime)
-      .replace("dag", "")
-      .toUpperCase();
-    const hour = formattedTime.getHours().toLocaleString("sv-SE");
-    const minutes = formattedTime.getMinutes().toLocaleString("sv-SE");
-
-    return {
-      objectDayOfTheWeek: dayOfTheWeek,
-      objectDate: date,
-      objectMonth: month,
-      objectHour: hour,
-      objectMinutes: minutes,
-    };
-  };
 
   useEffect(() => {
     const extractedTags = tags.join(" | ");
@@ -90,10 +90,7 @@ export default function ProductInfoComponent({ product }) {
               >
                 LÄGG BUD
               </button>
-              <button
-                className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80"
-                onClick={() => document.getElementById("buyDialog").showModal()}
-              >
+              <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
                 KÖP NU
               </button>
               <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">
