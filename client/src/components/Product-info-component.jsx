@@ -23,7 +23,9 @@ export default function ProductInfoComponent({ product }) {
   const [tag, setTags] = useState("");
   const [showCreatedDate, setShowCreatedDate] = useState("");
   const [showEndDate, setShowEndDate] = useState("");
-  const [updateBid, setUpdateBid] = useState(bids[bids.length - 1].bidAmount);
+  const [updateBid, setUpdateBid] = useState(
+    bids && bids.length > 0 ? bids[bids.length - 1].bidAmount : "Inga bud"
+  );
 
   const formatTime = (time) => {
     const options = { weekday: "long" };
@@ -83,8 +85,8 @@ export default function ProductInfoComponent({ product }) {
               </h2>
               <p className="font-medium text-lg">Lägsta bud: {minimumBid}kr</p>
               <p className="font-medium text-lg">
-                Nuvarande högsta bud: {updateBid}
-                kr
+                Nuvarande högsta bud:{" "}
+                {bids.length === 0 ? <span>Inga bud</span> : `${updateBid} kr`}
               </p>
             </div>
 

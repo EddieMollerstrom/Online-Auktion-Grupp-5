@@ -17,7 +17,7 @@ const productsSchema = new mongoose.Schema({
         bidAmount: { type: Number, default: 0 },
       },
     ],
-    default: [0],
+    default: [],
   },
   price: String,
   minimumBid: Number,
