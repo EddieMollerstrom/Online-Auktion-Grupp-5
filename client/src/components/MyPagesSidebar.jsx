@@ -22,11 +22,11 @@ export default function MyPagesSidebar() {
           <span className="material-symbols-outlined">shopping_cart</span>DINA
           KÖP
         </Link>
-        <Link to={"/ChangeMyName"}>
+        <Link to={"/Auktionpage"}>
           <span className="material-symbols-outlined">add_circle</span>SKAPA NY
           ANNONS
         </Link>
-        <Link to={"/ChangeMyName"}>
+        <Link to={"/MyPages/SoldObjects"}>
           <span className="material-symbols-outlined">done</span>DINA SÅLDA
         </Link>
       </nav>

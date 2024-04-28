@@ -12,6 +12,7 @@ import Contact from "../pages/Contact.jsx";
 import MyPages from "../pages/MyPages.jsx";
 import Myobjects from "../pages/Myobjects.jsx";
 import MyPagesSavedObjects from "../pages/MyPagesSaved.jsx";
+import MyPagesSold from "../pages/MyPagesSold.jsx";
 import AboutUs from "../pages/AboutUs.jsx";
 import LoginSignup from "../pages/LoginSignup.jsx";
 import NotFound from "../pages/NotFound.jsx";
@@ -38,6 +39,7 @@ const Router = createBrowserRouter(
             path="/MyPages/SavedObjects"
             element={<MyPagesSavedObjects />}
           />
+          <Route path="/MyPages/SoldObjects" element={<MyPagesSold />} />
         </Route>
       </Route>
 
