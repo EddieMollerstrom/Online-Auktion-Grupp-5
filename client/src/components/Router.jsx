@@ -39,7 +39,7 @@ const Router = createBrowserRouter(
             path="/MyPages/SavedObjects"
             element={<MyPagesSavedObjects />}
           />
-          <Route path="/Auktionpage"></Route>
+          <Route path="/MyPages/Auktionpage"></Route>
           <Route path="/MyPages/SoldObjects" element={<MyPagesSold />} />
         </Route>
       </Route>
