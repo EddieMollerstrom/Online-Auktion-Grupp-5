@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { GlobalContext } from "../Globalcontext.jsx";
 
 export default function Login() {
+  const { setIsLoggedIn } = useContext(GlobalContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -23,6 +27,7 @@ export default function Login() {
         throw new Error(errorData.message);
       } else {
         const errorData = await response.json();
+        setIsLoggedIn(errorData.user);
         setUsername("");
         setPassword("");
 
