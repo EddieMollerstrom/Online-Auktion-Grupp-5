@@ -14,7 +14,7 @@ export default function MyPages() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/testUsers");
+        const response = await fetch("/api/users");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
