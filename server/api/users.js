@@ -1,5 +1,7 @@
 import User from "../Model/User.js";
+import Product from "../Model/Product.js";
 import crypto from "crypto";
+import { log } from "console";
 const salt = "detsaltigastesaltet";
 
 function getHash(password) {
@@ -86,12 +88,34 @@ export default function (server, db) {
   });
 
   // kolla om någon är inloggad
-
   server.get("/api/login", async (req, res) => {
     if (req.session.login) {
-      res.json({ isLoggedIn: true, _id: req.session.login._id });
+      res.json({ isLoggedIn: true, _id: req.session.login._id, user: req.session.login });
     } else {
       res.status(400).json({ isLoggedIn: false });
     }
   });
+
+  //Lägg till produkt i favoriter
+  server.put("/api/users/products/:id", async (req, res) => {
+
+    try {
+      const id = req.params.id;
+      const user = await User.findById(req.session.login._id);
+      const product = await Product.findById(id);
+
+      if (user.savedProducts.includes(product._id)) {
+        return res.status(400).json({ message: "Denna produkt finns redan i dina sparade objekt." })
+      }
+
+      user.savedProducts.push(product._id);
+      await user.save();
+
+      res.status(200).json({ message: "Produkten har lagts till i dina sparade objekt." })
+
+    } catch (error) {
+      console.error("Error adding product to user:", error);
+      res.status(500).json({ error: "Kunde inte lägga till produkten i favoriter." });
+    }
+  })
 }

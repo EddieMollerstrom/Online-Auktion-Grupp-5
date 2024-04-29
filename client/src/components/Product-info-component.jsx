@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import BidDialog from "./BidDialog.jsx";
+import { useEffect, useState } from "react"
+import BidDialog from "./BidDialog.jsx"
 
 export function formatTime(time) {
-  const options = { weekday: "long" };
-  const formattedTime = new Date(time);
+  const options = { weekday: "long" }
+  const formattedTime = new Date(time)
   const month = formattedTime
     .toLocaleDateString("sv-SE", { month: "short" })
-    .toUpperCase();
-  const date = formattedTime.toLocaleDateString("sv-SE", { day: "numeric" });
+    .toUpperCase()
+  const date = formattedTime.toLocaleDateString("sv-SE", { day: "numeric" })
   const dayOfTheWeek = new Intl.DateTimeFormat("sv-SE", options)
     .format(formattedTime)
     .replace("dag", "")
-    .toUpperCase();
-  const hour = formattedTime.getHours().toLocaleString("sv-SE");
-  const minutes = formattedTime.getMinutes().toLocaleString("sv-SE");
+    .toUpperCase()
+  const hour = formattedTime.getHours().toLocaleString("sv-SE")
+  const minutes = formattedTime.getMinutes().toLocaleString("sv-SE")
 
   return {
     objectDayOfTheWeek: dayOfTheWeek,
@@ -21,7 +21,7 @@ export function formatTime(time) {
     objectMonth: month,
     objectHour: hour,
     objectMinutes: minutes,
-  };
+  }
 }
 
 export default function ProductInfoComponent({ product }) {
@@ -38,22 +38,22 @@ export default function ProductInfoComponent({ product }) {
     shipping,
     currentHighestBid,
     minimumBid,
-  } = product;
+  } = product
 
-  const [tag, setTags] = useState("");
-  const [showCreatedDate, setShowCreatedDate] = useState("");
-  const [showEndDate, setShowEndDate] = useState("");
+  const [tag, setTags] = useState("")
+  const [showCreatedDate, setShowCreatedDate] = useState("")
+  const [showEndDate, setShowEndDate] = useState("")
 
   useEffect(() => {
-    const extractedTags = tags.join(" | ");
-    setTags(extractedTags);
+    const extractedTags = tags.join(" | ")
+    setTags(extractedTags)
 
-    const createdDateObject = formatTime(created);
-    setShowCreatedDate(createdDateObject);
+    const createdDateObject = formatTime(created)
+    setShowCreatedDate(createdDateObject)
 
-    const endDateObject = formatTime(ends);
-    setShowEndDate(endDateObject);
-  }, []);
+    const endDateObject = formatTime(ends)
+    setShowEndDate(endDateObject)
+  }, [])
 
   return (
     <>
@@ -93,7 +93,23 @@ export default function ProductInfoComponent({ product }) {
               <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
                 KÖP NU
               </button>
-              <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">
+              <button
+                className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80"
+                onClick={async () => {
+                  const response = await fetch(`/api/users/products/${_id}`, {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      productId: _id,
+                    }),
+                  })
+
+                  const result = await response.json()
+                  console.log(result)
+                }}
+              >
                 BEVAKA AKTION
               </button>
             </div>
@@ -123,5 +139,5 @@ export default function ProductInfoComponent({ product }) {
         minimumBid={minimumBid}
       />
     </>
-  );
+  )
 }

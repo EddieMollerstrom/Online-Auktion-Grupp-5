@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
-import ProductList from "../components/ProductList.jsx";
+import { useEffect, useState } from "react"
+import ProductList from "../components/ProductList.jsx"
 
 export default function MyPages() {
   const [userData, setUserData] = useState({
     currentSales: [],
     sold: [],
     notSold: [],
-  });
+  })
   const values = {
     title: "AKTIVA ANNONSER:",
-  };
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/testUsers");
+        const response = await fetch("/api/testUsers")
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Network response was not ok")
         }
-        const data = await response.json();
-        setUserData(data);
+        const data = await response.json()
+        setUserData(data)
       } catch (error) {
-        console.error("Fel vid fetch", error);
+        console.error("Fel vid fetch", error)
       }
-    };
-    fetchData();
-  }, []);
+    }
+    fetchData()
+  }, [])
 
   return (
     <>
@@ -61,5 +61,5 @@ export default function MyPages() {
         <ProductList values={values} />
       </section>
     </>
-  );
+  )
 }
