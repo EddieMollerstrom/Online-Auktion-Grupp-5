@@ -1,64 +1,42 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { GlobalContext } from "../Globalcontext.jsx";
 import ProductList from "../components/ProductList.jsx";
 
 export default function MyPages() {
-  const [userData, setUserData] = useState({
-    currentSales: [],
-    sold: [],
-    notSold: [],
-  });
-  const values = {
-    title: "AKTIVA ANNONSER:",
-  };
+  const { isLoggedIn } = useContext(GlobalContext);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/users");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setUserData(data);
-      } catch (error) {
-        console.error("Fel vid fetch", error);
-      }
-    };
-    fetchData();
-  }, []);
-
+  console.log(isLoggedIn);
   return (
     <>
       <section className="p-16">
         <h2 className="font-bold text-custom-green">
-          Välkommen {userData.firstName}!
+          Välkommen {isLoggedIn.username}!
         </h2>
         <p className="text-custom-green">Det här är dina sidor.</p>
-
         <div className="overview border-4 border-custom-green">
           <div className="head border-b-[3px] border-custom-green  flex justify-start items-center font-bold text-custom-green">
             FÖRSÄLJNINGSÖVERSIKT:
           </div>
           <div className="activeWrapper w-full flex text-center text-custom-gry">
             <section className="flex justify-center items-center">
-              {userData.currentSales.length}
+              {isLoggedIn.createdProducts.length}
               <br />
               AKTIVA
             </section>
             <section className="flex justify-center items-center">
-              {userData.sold.length}
+              {}
               <br />
               SÅLDA
             </section>
             <section className="flex justify-center items-center">
-              {userData.notSold.length}
+              {}
               <br />
               EJ SÅLDA
             </section>
           </div>
         </div>
-
-        <ProductList values={values} />
+        {/*         <ProductList values={values} />
+         */}{" "}
       </section>
     </>
   );

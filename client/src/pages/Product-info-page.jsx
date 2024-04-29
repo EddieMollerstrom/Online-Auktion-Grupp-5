@@ -1,10 +1,12 @@
 import ProductInfoComponent from "../components/Product-info-component.jsx";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { GlobalContext } from "../Globalcontext.jsx";
 
 export default function ProductInfoPage() {
   const { productId } = useParams();
 
+  const { isLoggedIn } = useContext(GlobalContext);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,6 +18,7 @@ export default function ProductInfoPage() {
 
         setProduct(data);
         setLoading(false);
+        console.log(isLoggedIn);
       } catch (error) {
         console.error("Fel vid fetch", error);
       }

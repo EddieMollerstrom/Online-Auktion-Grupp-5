@@ -4,16 +4,6 @@ import { GlobalContext } from "../Globalcontext.jsx";
 
 export default function Header() {
   const { isLoggedIn, setIsLoggedIn } = useContext(GlobalContext);
-  useEffect(() => {
-    fetch("/api/login")
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoggedIn(data.isLoggedIn);
-      })
-      .catch((error) => {
-        console.error("Error fetching login status:", error);
-      });
-  }, [isLoggedIn]);
 
   const handleLogout = () => {
     const logout = window.confirm("Säker på att du vill logga ut?");

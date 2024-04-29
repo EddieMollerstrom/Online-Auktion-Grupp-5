@@ -47,7 +47,6 @@ export default function (server, db) {
       res.status(201).json({ message: "Ny användare skapad." });
     } catch (error) {
       console.error("Error creating user:", error);
-      res.status(500).json({ error: "Could not create user" });
     }
   });
 
@@ -69,8 +68,9 @@ export default function (server, db) {
         );
         if (user) {
           // Sparar den inloggade användaren i req.session.login
-          req.session.login = user;
+          req.session.login = user._id;
           console.log(req.session.login);
+          console.log(user);
           res.status(200).json({
             message: `Du har loggat in som ${user.username}.`,
             user: user,
@@ -90,7 +90,7 @@ export default function (server, db) {
 
   server.get("/api/login", async (req, res) => {
     if (req.session.login) {
-      res.json({ isLoggedIn: true, _id: req.session.login._id });
+      res.json({ isLoggedIn: true, _id: req.session.login });
     } else {
       res.status(400).json({ isLoggedIn: false });
     }
