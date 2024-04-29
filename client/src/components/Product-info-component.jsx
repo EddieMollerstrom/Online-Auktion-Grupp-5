@@ -13,8 +13,8 @@ export function formatTime(time) {
     .format(formattedTime)
     .replace("dag", "")
     .toUpperCase();
-  const hour = formattedTime.getHours().toLocaleString("sv-SE");
-  const minutes = formattedTime.getMinutes().toLocaleString("sv-SE");
+  const hour = formattedTime.getHours().toString().padStart(2, "0");
+  const minutes = formattedTime.getMinutes().toString().padStart(2, "0");
 
   return {
     objectDayOfTheWeek: dayOfTheWeek,
@@ -41,28 +41,28 @@ export default function ProductInfoComponent({ product }) {
     minimumBid,
   } = product;
 
-  function checkLoginForStripe () {
-    if(isLoggedIn) {
+  function checkLoginForStripe() {
+    if (isLoggedIn) {
       tryStripe();
-    }else {
+    } else {
       document.getElementById("bidDialog").showModal();
     }
   }
 
   async function tryStripe() {
-    console.log(1)
+    console.log(1);
     const response = await fetch("/api/payments", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         title: title,
         price: price,
-        productId: _id
-      })
-    })
-    let result = await response.json()
+        productId: _id,
+      }),
+    });
+    let result = await response.json();
     if (response.status === 200) {
-      location.href = result.url
+      location.href = result.url;
     }
   }
 
@@ -122,7 +122,10 @@ export default function ProductInfoComponent({ product }) {
               >
                 LÄGG BUD
               </button>
-              <button onClick={checkLoginForStripe} className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
+              <button
+                onClick={checkLoginForStripe}
+                className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80"
+              >
                 KÖP NU
               </button>
               <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">

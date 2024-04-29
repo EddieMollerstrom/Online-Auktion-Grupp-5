@@ -5,7 +5,7 @@ function AuctionForm({ bidCount }) {
   const [description, setDescription] = useState("");
   const [ends, setEndDate] = useState("");
   const [minimumBid, setminimumBid] = useState("");
-  const [price, setprice] = useState("");
+  const [price, setPrice] = useState("");
   const [img, setImageURL] = useState("");
 
   const [däggdjur, setDäggdjur] = useState(false);
@@ -20,37 +20,40 @@ function AuctionForm({ bidCount }) {
     rovdjur ? "Rovdjur" : "",
   ].filter((tag) => tag !== "");
 
-  const formData = {
-    title,
-    description,
-    ends,
-    minimumBid,
-    price,
-    img,
-    tags,
-  };
-
   const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
       const response = await fetch(`/api/products`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          ends,
+          minimumBid,
+          price,
+          img,
+          tags,
+        }),
       });
 
-      if (response.ok) {
+      if (!response.ok) {
         const result = await response.json();
-        console.log(result);
+        throw new Error(result.message);
       } else {
-        console.log("statuskod:", response);
+        setTitle("");
+        setDescription("");
+        setEndDate("");
+        setminimumBid("");
+        setPrice("");
+        setImageURL("");
       }
     } catch (error) {
       console.error("Något gick fel:", error);
     }
-
-    event.preventDefault();
-
-    console.log("Formulärdata:", formData);
   };
 
   return (
@@ -60,11 +63,13 @@ function AuctionForm({ bidCount }) {
         <form
           className="bg-custom-grey rounded flex flex-col p-7 gap-3 text-custom-white annonscontainer"
           encType="multipart/form-data"
+          onSubmit={handleSubmit}
         >
           <label htmlFor="title">Titel:</label>
           <input
             type="text"
             id="title"
+            required
             name="title"
             className="text-black"
             value={title}
@@ -75,6 +80,7 @@ function AuctionForm({ bidCount }) {
           <textarea
             id="description"
             name="description"
+            required
             rows="4"
             className="text-black"
             value={description}
@@ -85,6 +91,7 @@ function AuctionForm({ bidCount }) {
           <input
             type="datetime-local"
             id="ends"
+            required
             name="ends"
             className="text-black"
             value={ends}
@@ -95,6 +102,7 @@ function AuctionForm({ bidCount }) {
           <input
             type="text"
             id="minimumBid"
+            required
             name="minimumBid"
             className="text-black"
             value={minimumBid}
@@ -105,10 +113,11 @@ function AuctionForm({ bidCount }) {
           <input
             type="text"
             id="price"
+            required
             name="price"
             className="text-black"
             value={price}
-            onChange={(event) => setprice(event.target.value)}
+            onChange={(event) => setPrice(event.target.value)}
           />
 
           <section className="flex gap-5">
@@ -158,18 +167,20 @@ function AuctionForm({ bidCount }) {
             type="text"
             id="img"
             name="img"
+            // required
             className="text-black"
             placeholder="Ange bildens URL"
             value={img}
             onChange={(event) => setImageURL(event.target.value)}
           />
 
-          <input
-            type="button"
-            onClick={handleSubmit}
+          <button
+            type="submit"
             value="Skapa annons"
             className="bg-custom-yellow text-custom-green py-2 px-4 rounded-full cursor-pointer"
-          />
+          >
+            Skapa Annons
+          </button>
         </form>
       </div>
     </div>
