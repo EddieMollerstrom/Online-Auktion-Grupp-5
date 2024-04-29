@@ -14,11 +14,11 @@ export default function MyPagesSidebar() {
         <Link to={"/MyPages/Myobjects"}>
           <span class="material-symbols-outlined">sell</span>MINA ANNONSER
         </Link>
-        <Link to={"/ChangeMyName"}>
+        <Link to={"/MyPages/Mybids"}>
           <span className="material-symbols-outlined">autorenew</span>
           BUDGIVNINGAR
         </Link>
-        <Link to={"/ChangeMyName"}>
+        <Link to={"/MyPages/BoughtObjects"}>
           <span className="material-symbols-outlined">shopping_cart</span>DINA
           KÖP
         </Link>
