@@ -41,6 +41,21 @@ export default function ProductInfoComponent({ product }) {
     minimumBid,
   } = product;
 
+  async function tryStripe() {
+    console.log(1)
+    const response = await fetch("/api/payments", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: title,
+        price: price})
+    })
+    let result = await response.json()
+    if (response.status === 200) {
+      location.href = result.url
+    }
+  }
+
   const { isLoggedIn } = useContext(GlobalContext);
 
   const [tag, setTags] = useState("");
@@ -97,7 +112,7 @@ export default function ProductInfoComponent({ product }) {
               >
                 LÄGG BUD
               </button>
-              <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
+              <button onClick={tryStripe} className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
                 KÖP NU
               </button>
               <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">
