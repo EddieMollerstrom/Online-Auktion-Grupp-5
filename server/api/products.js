@@ -1,4 +1,5 @@
 import Product from "../Model/Product.js";
+import User from "../Model/User.js";
 
 export default function (server, db) {
   //Hämtar alla produkter
@@ -16,6 +17,7 @@ export default function (server, db) {
   //Skapar ett event
   server.post("/api/products", async (req, res) => {
     try {
+      console.log(req.body);
       const newProduct = new Product({
         title: req.body.title,
         description: req.body.description,
@@ -23,8 +25,6 @@ export default function (server, db) {
         img: req.body.img,
         created: new Date(),
         ends: req.body.ends,
-        bidCount: req.body.bidCount,
-        currentHighestBid: req.body.currentHighestBid,
         price: req.body.price,
         minimumBid: req.body.minimumBid,
         shipping: req.body.shipping,
@@ -33,9 +33,17 @@ export default function (server, db) {
 
       const savedProduct = await newProduct.save();
 
-      res.status(201).json(savedProduct);
+      const id = savedProduct.id;
+
+      const userCreatedProduct = await User.findById(req.session.login);
+
+      userCreatedProduct.createdProducts.push(id);
+
+      const savedUserCreatedProduct = await userCreatedProduct.save();
+
+      res.status(201).json({ savedProduct, savedUserCreatedProduct });
     } catch (err) {
-      res.status(400).json({ message: "Något gick fel." }, err);
+      res.status(500).json({ message: "Något gick fel." }, err);
     }
   });
 
@@ -49,13 +57,29 @@ export default function (server, db) {
   });
 
   server.patch("/api/products/:id", async (req, res) => {
-    const id = req.params.id;
+    try {
+      const id = req.params.id;
 
-    const updateBid = {
-      bidCount: req.body.bidCount,
-      currentHighestBid: req.body.currentHighestBid,
-    };
+      const bid = {
+        userId: req.session.login,
+        bidAmount: req.body.bidAmount,
+      };
 
-    await Product.findByIdAndUpdate(id, updateBid);
+      const productBid = await Product.findById(id);
+
+      productBid.bids.push(bid);
+
+      const savedProduct = await productBid.save();
+
+      const userBid = await User.findById(req.session.login);
+
+      userBid.userBids.push(id);
+
+      const savedUserBid = await userBid.save();
+
+      res.status(201).json({ savedProduct, savedUserBid });
+    } catch (error) {
+      res.status(500).json({ message: "Något gick fel", error });
+    }
   });
 }
