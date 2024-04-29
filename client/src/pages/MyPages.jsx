@@ -19,7 +19,7 @@ export default function MyPages() {
           </div>
           <div className="activeWrapper w-full flex text-center text-custom-gry">
             <section className="flex justify-center items-center">
-              {isLoggedIn.createdProducts.length}
+              {}
               <br />
               AKTIVA
             </section>

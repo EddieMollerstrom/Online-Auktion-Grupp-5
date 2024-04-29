@@ -90,7 +90,10 @@ export default function (server, db) {
 
   server.get("/api/login", async (req, res) => {
     if (req.session.login) {
-      res.json({ isLoggedIn: true, _id: req.session.login });
+      res.json({
+        isLoggedIn: true,
+        _id: req.session.login,
+      });
     } else {
       res.status(400).json({ isLoggedIn: false });
     }
@@ -108,5 +111,11 @@ export default function (server, db) {
         message: "Ingen är inloggad",
       });
     }
+  });
+
+  server.get("/api/userSession", async (req, res) => {
+    const user = await User.findById(req.session.login);
+    console.log(req.session.user);
+    res.status(200).json(user);
   });
 }

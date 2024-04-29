@@ -33,10 +33,19 @@ export default function Login() {
         setPassword("");
 
         setMessage(result.message);
+        /* setTimeout(() => {
+          window.location.href = "/";
+        }, 10000); */
       }
     } catch (error) {
       console.error("Error during login:", error);
       setMessage(error.message);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
     }
   };
 
@@ -55,6 +64,7 @@ export default function Login() {
             setUsername(e.target.value);
             setMessage("");
           }}
+          onKeyDown={handleKeyPress}
         />
         <input
           className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-md text-lg font-bold placeholder-black"
@@ -65,6 +75,7 @@ export default function Login() {
             setPassword(e.target.value);
             setMessage("");
           }}
+          onKeyDown={handleKeyPress}
         />
       </div>
       <button
