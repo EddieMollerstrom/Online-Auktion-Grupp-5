@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import BidDialog from "./BidDialog.jsx";
-import { GlobalContext } from "../Globalcontext.jsx";
+//import { GlobalContext } from "../Globalcontext.jsx";
 
 export function formatTime(time) {
   const options = { weekday: "long" };
@@ -41,7 +41,7 @@ export default function ProductInfoComponent({ product }) {
     minimumBid,
   } = product;
 
-  const { isLoggedIn } = useContext(GlobalContext);
+  //const { isLoggedIn } = useContext(GlobalContext);
 
   const [tag, setTags] = useState("");
   const [showCreatedDate, setShowCreatedDate] = useState("");
@@ -122,16 +122,12 @@ export default function ProductInfoComponent({ product }) {
           </div>
         </section>
       </section>
-      {isLoggedIn ? (
-        <BidDialog
-          productId={_id}
-          bids={bids}
-          currentHighestBid={currentHighestBid}
-          minimumBid={minimumBid}
-        />
-      ) : (
-        console.log("Not logged in")
-      )}
+      <BidDialog
+        productId={_id}
+        bids={bids}
+        currentHighestBid={currentHighestBid}
+        minimumBid={minimumBid}
+      />
     </>
   );
 }
