@@ -8,7 +8,6 @@ app.use(express.json());
 
 
 export default function payment(server, path) {
- // path += "/payment";
 
   server.post("/api/payments", async (req, res) => {
     try {
@@ -16,11 +15,11 @@ export default function payment(server, path) {
         price_data: {
           currency: 'sek',
           product_data: {
-            name: "Testprodukt",
+            name: req.body.title,
           },
-          unit_amount: 5 * 1000,
+          unit_amount: req.body.price * 1000,
         },
-        quantity: 2,
+        quantity: 1, //om tid hade funnits hade vi velat utveckal möjlighet till att betala fler samtidigt.
       };
 
       const session = await stripe.checkout.sessions.create({
@@ -35,10 +34,5 @@ export default function payment(server, path) {
       res.status(500).json({ message: "Något gick fel på servern", errorMessage: error });
     }
   });
-}
-
-
-
-//const PORT = process.env.PORT || 4242;
-//app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+};
 

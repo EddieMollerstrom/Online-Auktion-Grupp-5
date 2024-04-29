@@ -40,6 +40,12 @@ export default function Signup() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   return (
     <div className="flex-1 flex flex-col justify-center p-8 h-screen max-w-55 rounded-r-lg text-center relative bg-custom-white">
       <h2 className="relative bottom-16 text-5xl font-bold text-black">
@@ -55,6 +61,7 @@ export default function Signup() {
             setUsername(e.target.value);
             setMessage("");
           }}
+          onKeyDown={handleKeyPress}
           required
         />
         <input
@@ -66,6 +73,7 @@ export default function Signup() {
             setEmail(e.target.value);
             setMessage("");
           }}
+          onKeyDown={handleKeyPress}
           required
         />
         <input
@@ -77,6 +85,7 @@ export default function Signup() {
             setPassword(e.target.value);
             setMessage("");
           }}
+          onKeyDown={handleKeyPress}
           required
         />
         <button

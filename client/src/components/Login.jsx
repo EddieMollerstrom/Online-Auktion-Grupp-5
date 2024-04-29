@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { GlobalContext } from "../Globalcontext.jsx";
 
 export default function Login() {
+  const { setIsLoggedIn } = useContext(GlobalContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -23,14 +27,24 @@ export default function Login() {
         throw new Error(errorData.message);
       } else {
         const errorData = await response.json();
+        setIsLoggedIn(errorData.user);
         setUsername("");
         setPassword("");
 
         setMessage(errorData.message);
+        setTimeout(() => {
+          window.location.href = "/MyPages";
+        }, 1000);
       }
     } catch (error) {
       console.error("Error during login:", error);
       setMessage(error.message);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
     }
   };
 
@@ -49,6 +63,7 @@ export default function Login() {
             setUsername(e.target.value);
             setMessage("");
           }}
+          onKeyDown={handleKeyPress}
         />
         <input
           className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-md text-lg font-bold placeholder-black"
@@ -59,6 +74,7 @@ export default function Login() {
             setPassword(e.target.value);
             setMessage("");
           }}
+          onKeyDown={handleKeyPress}
         />
       </div>
       <button
