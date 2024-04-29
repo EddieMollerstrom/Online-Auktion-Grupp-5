@@ -15,6 +15,8 @@ import MyPagesSavedObjects from "../pages/MyPagesSaved.jsx";
 import AboutUs from "../pages/AboutUs.jsx";
 import LoginSignup from "../pages/LoginSignup.jsx";
 import NotFound from "../pages/NotFound.jsx";
+import Checkout from "../pages/Checkout.jsx";
+
 
 //Components
 import AppLayout from "../AppLayout.jsx";
@@ -39,6 +41,7 @@ const Router = createBrowserRouter(
             element={<MyPagesSavedObjects />}
           />
         </Route>
+        <Route path="/Checkout" element={<Checkout />} />
       </Route>
 
       <Route path="/LoginSignup" element={<LoginSignup />} />
