@@ -51,12 +51,6 @@ export default function BidDialog({ productId, bids, minimumBid }) {
     }
   };
 
-  /*
-  function closeModal() {
-    document.getElementById("bidDialog").close();
-    //location.reload();
-  }*/
-
   return (
     <>
       <dialog id="bidDialog" className="h-54 w-80 rounded-md p-5">
