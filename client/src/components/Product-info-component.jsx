@@ -100,7 +100,23 @@ export default function ProductInfoComponent({ product }) {
               <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
                 KÖP NU
               </button>
-              <button className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80">
+              <button
+                className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80"
+                onClick={async () => {
+                  const response = await fetch(`/api/users/products/${_id}`, {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      productId: _id,
+                    }),
+                  });
+
+                  const result = await response.json();
+                  console.log(result);
+                }}
+              >
                 BEVAKA AKTION
               </button>
             </div>

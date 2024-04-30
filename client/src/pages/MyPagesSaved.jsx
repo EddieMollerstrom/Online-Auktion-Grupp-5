@@ -7,6 +7,7 @@ export default function MyPagesSavedObjects() {
 
   const values = {
     title: "SPARADE OBJEKT:",
+    products: savedProducts,
   };
 
   return (
