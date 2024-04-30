@@ -49,11 +49,38 @@ export default function (server, db) {
 
   //Ta bort en produkt
   server.delete("/api/products/:id", async (req, res) => {
+    try {
     const id = req.params.id;
 
     await Product.findByIdAndDelete(id);
 
-    res.status(204).send();
+    res.status(204).json(); }
+    catch (error){
+      console.error(error)
+      res.status(400).json()
+    }
+  });
+
+  server.delete("/api/products/", async (req, res) => {
+    console.log(1111);
+    try{
+      console.log(2222);
+      console.log(req.session);
+      if(req.session.productId){
+      console.log(3);
+      const id = req.session.productId
+      console.log(3);
+      console.log(id)
+      await Product.findByIdAndDelete(id);
+  
+      res.status(200).json();
+    } }
+    catch ( error){
+      console.error(error)
+      res.status(400).json({errorMessage: error.message})
+    }
+    
+
   });
 
   server.patch("/api/products/:id", async (req, res) => {

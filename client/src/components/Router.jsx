@@ -17,6 +17,7 @@ import MyPagesBids from "../pages/MyPagesBids.jsx";
 import AboutUs from "../pages/AboutUs.jsx";
 import LoginSignup from "../pages/LoginSignup.jsx";
 import NotFound from "../pages/NotFound.jsx";
+import Checkout from "../pages/Checkout.jsx";
 
 //Components
 import AppLayout from "../AppLayout.jsx";
@@ -44,6 +45,7 @@ const Router = createBrowserRouter(
           <Route path="/MyPages/Auktionpage"></Route>
           <Route path="/MyPages/SoldObjects" element={<MyPagesSold />} />
         </Route>
+        <Route path="/Checkout" element={<Checkout />} />
       </Route>
 
       <Route path="/LoginSignup" element={<LoginSignup />} />

@@ -41,6 +41,31 @@ export default function ProductInfoComponent({ product }) {
     minimumBid,
   } = product;
 
+  function checkLoginForStripe () {
+    if(isLoggedIn) {
+      tryStripe();
+    }else {
+      document.getElementById("bidDialog").showModal();
+    }
+  }
+
+  async function tryStripe() {
+    console.log(1)
+    const response = await fetch("/api/payments", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: title,
+        price: price,
+        productId: _id
+      })
+    })
+    let result = await response.json()
+    if (response.status === 200) {
+      location.href = result.url
+    }
+  }
+
   const { isLoggedIn } = useContext(GlobalContext);
 
   const [tag, setTags] = useState("");
@@ -117,7 +142,7 @@ export default function ProductInfoComponent({ product }) {
               >
                 LÄGG BUD
               </button>
-              <button className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
+              <button onClick={checkLoginForStripe} className="border-solid border-2 border-custom-green rounded-md p-1 bg-custom-white text-custom-green hover:text-custom-white hover:bg-custom-green active:opacity-80">
                 KÖP NU
               </button>
               <button
@@ -145,16 +170,12 @@ export default function ProductInfoComponent({ product }) {
           </div>
         </section>
       </section>
-      {isLoggedIn ? (
-        <BidDialog
-          productId={_id}
-          bids={bids}
-          currentHighestBid={currentHighestBid}
-          minimumBid={minimumBid}
-        />
-      ) : (
-        console.log("Not logged in")
-      )}
+      <BidDialog
+        productId={_id}
+        bids={bids}
+        currentHighestBid={currentHighestBid}
+        minimumBid={minimumBid}
+      />
     </>
   );
 }
