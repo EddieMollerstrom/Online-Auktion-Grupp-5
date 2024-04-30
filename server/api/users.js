@@ -114,7 +114,16 @@ export default function (server, db) {
   });
 
   server.get("/api/userSession", async (req, res) => {
-    const user = await User.findById(req.session.login);
+    const user = await User.findById(req.session.login).populate([
+      {
+        path: "userBids",
+        select: "bids",
+      },
+      {
+        path: "createdProducts",
+        select: "title bids",
+      },
+    ]);
     console.log(req.session.user);
     res.status(200).json(user);
   });

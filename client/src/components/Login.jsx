@@ -33,9 +33,9 @@ export default function Login() {
         setPassword("");
 
         setMessage(result.message);
-        /* setTimeout(() => {
-          window.location.href = "/";
-        }, 10000); */
+        setTimeout(() => {
+          window.location.href = "/MyPages";
+        }, 1000);
       }
     } catch (error) {
       console.error("Error during login:", error);

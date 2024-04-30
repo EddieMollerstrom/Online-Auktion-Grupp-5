@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { GlobalContext } from "../Globalcontext.jsx";
 import ProductList from "../components/ProductList.jsx";
 
 export default function MyPagesSoldObjects() {
+  const { isLoggedIn } = useContext(GlobalContext);
+
   const values = {
     title: "SÅLDA OBJEKT:",
   };
