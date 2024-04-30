@@ -10,7 +10,6 @@ import Auktionpage from "../pages/Auktionpage.jsx";
 import ProductInfoPage from "../pages/Product-info-page.jsx";
 import Contact from "../pages/Contact.jsx";
 import MyPages from "../pages/MyPages.jsx";
-import Myobjects from "../pages/Myobjects.jsx";
 import MyPagesSavedObjects from "../pages/MyPagesSaved.jsx";
 import MyPagesBuys from "../pages/MyPagesBuys.jsx";
 import MyPagesSold from "../pages/MyPagesSold.jsx";
@@ -19,7 +18,6 @@ import AboutUs from "../pages/AboutUs.jsx";
 import LoginSignup from "../pages/LoginSignup.jsx";
 import NotFound from "../pages/NotFound.jsx";
 import Checkout from "../pages/Checkout.jsx";
-
 
 //Components
 import AppLayout from "../AppLayout.jsx";
@@ -38,7 +36,6 @@ const Router = createBrowserRouter(
         <Route path="/Auktionpage" element={<Auktionpage />} />
         <Route path="/MyPages" element={<MyPagesAppLayout />}>
           <Route index element={<MyPages />} />
-          <Route path="/MyPages/Myobjects" element={<Myobjects />} />
           <Route
             path="/MyPages/SavedObjects"
             element={<MyPagesSavedObjects />}
