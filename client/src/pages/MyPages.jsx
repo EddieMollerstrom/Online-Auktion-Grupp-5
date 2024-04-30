@@ -42,11 +42,11 @@ export default function MyPages() {
           {<ProductList values={values} />}
           <div className="p-4 head border-x-4 border-b-4 border-solid rounded-b-2xl border-custom-green flex justify-start items-center font-bold text-custom-green">
             {isLoggedIn ? (
-              <div className="flex flex-col justify-between w-96">
+              <div className="flex flex-col justify-between w-full">
                 {isLoggedIn.createdProducts.map((createdProduct) => {
                   return (
-                    <div className="flex justify-between border-b-2 w-full align-text-bottom">
-                      <p className="self-baseline">{createdProduct.title}</p>
+                    <div className="flex justify-between border-b-2 w-full align-text-bottom border-custom-green">
+                      <p>{createdProduct.title}</p>
                       <p>{createdProduct.bids.length}</p>
                     </div>
                   );

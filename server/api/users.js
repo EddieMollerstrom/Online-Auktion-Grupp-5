@@ -118,11 +118,15 @@ export default function (server, db) {
     const user = await User.findById(req.session.login).populate([
       {
         path: "userBids",
-        select: "bids",
+        select: "title bids",
       },
       {
         path: "createdProducts",
         select: "title bids",
+      },
+      {
+        path: "savedProducts",
+        select: "title price bids",
       },
     ]);
     console.log(req.session.user);
@@ -130,26 +134,25 @@ export default function (server, db) {
   });
 
   //Lägg till produkt i favoriter
-  server.put("/api/users/products/:id", async (req, res) => {
+  server.patch("/api/users/products/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const user = await User.findById(req.session.login._id);
-      const product = await Product.findById(id);
+      const user = await User.findById(req.session.login);
+      //const product = await Product.findById(id);
 
-      if (user.savedProducts.includes(product._id)) {
-        return res
-          .status(400)
-          .json({
-            message: "Denna produkt finns redan i dina sparade objekt.",
-          });
+      if (user.savedProducts.includes(id)) {
+        return res.status(400).json({
+          message: "Denna produkt finns redan i dina sparade objekt.",
+        });
       }
 
-      user.savedProducts.push(product._id);
-      await user.save();
+      user.savedProducts.push(id);
+      const savedSavedProducts = await user.save();
 
-      res
-        .status(200)
-        .json({ message: "Produkten har lagts till i dina sparade objekt." });
+      res.status(200).json({
+        savedSavedProducts,
+        message: "Produkten har lagts till i dina sparade objekt.",
+      });
     } catch (error) {
       console.error("Error adding product to user:", error);
       res

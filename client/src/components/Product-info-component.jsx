@@ -61,6 +61,26 @@ export default function ProductInfoComponent({ product }) {
     setShowEndDate(endDateObject);
   }, []);
 
+  const updateSavedProduct = async () => {
+    const response = await fetch(`/api/users/products/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        productId: _id,
+      }),
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error("Något gick fel");
+    } else {
+      location.reload();
+    }
+    console.log(result);
+  };
+
   return (
     <>
       <section className="flex justify-around align-middle mt-16 mb-20">
@@ -102,20 +122,7 @@ export default function ProductInfoComponent({ product }) {
               </button>
               <button
                 className="bg-custom-yellow text-custom-white rounded-md p-1 border-solid border-2 border-custom-yellow hover:bg-custom-white hover:text-custom-yellow active:opacity-80"
-                onClick={async () => {
-                  const response = await fetch(`/api/users/products/${_id}`, {
-                    method: "PUT",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      productId: _id,
-                    }),
-                  });
-
-                  const result = await response.json();
-                  console.log(result);
-                }}
+                onClick={updateSavedProduct}
               >
                 BEVAKA AKTION
               </button>
