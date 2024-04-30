@@ -1,13 +1,10 @@
-export default function ProductList(props) {
-  const values = props.values;
+export default function ProductList({ values }) {
+  const { title } = values;
 
   return (
     <>
-      <div className="overview border-4 border-custom-green">
-        <div className="head border-b-[3px] border-custom-green  flex justify-start items-center font-bold text-custom-green">
-          {values.title}
-        </div>
-        <div className="activeWrapper w-full flex text-center text-custom-gry"></div>
+      <div className="p-4 head border-4 border-solid rounded-t-2xl  border-custom-green flex justify-start items-center font-bold text-custom-green">
+        {title}
       </div>
     </>
   );

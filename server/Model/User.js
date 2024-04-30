@@ -16,6 +16,12 @@ const usersSchema = new mongoose.Schema({
       ref: "products",
     },
   ],
+  savedProducts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "products",
+    },
+  ],
 });
 
 const User = mongoose.model("users", usersSchema);

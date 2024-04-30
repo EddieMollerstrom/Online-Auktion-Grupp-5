@@ -26,12 +26,13 @@ export default function Login() {
         const errorData = await response.json();
         throw new Error(errorData.message);
       } else {
-        const errorData = await response.json();
-        setIsLoggedIn(errorData.user);
+        const result = await response.json();
+        console.log(result);
+        setIsLoggedIn(result.user);
         setUsername("");
         setPassword("");
 
-        setMessage(errorData.message);
+        setMessage(result.message);
         setTimeout(() => {
           window.location.href = "/MyPages";
         }, 1000);

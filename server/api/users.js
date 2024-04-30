@@ -1,5 +1,7 @@
 import User from "../Model/User.js";
+import Product from "../Model/Product.js";
 import crypto from "crypto";
+import { log } from "console";
 const salt = "detsaltigastesaltet";
 
 function getHash(password) {
@@ -47,7 +49,6 @@ export default function (server, db) {
       res.status(201).json({ message: "Ny användare skapad." });
     } catch (error) {
       console.error("Error creating user:", error);
-      res.status(500).json({ error: "Could not create user" });
     }
   });
 
@@ -69,8 +70,9 @@ export default function (server, db) {
         );
         if (user) {
           // Sparar den inloggade användaren i req.session.login
-          req.session.login = user;
+          req.session.login = user._id;
           console.log(req.session.login);
+          console.log(user);
           res.status(200).json({
             message: `Du har loggat in som ${user.username}.`,
             user: user,
@@ -87,10 +89,12 @@ export default function (server, db) {
   });
 
   // kolla om någon är inloggad
-
   server.get("/api/login", async (req, res) => {
     if (req.session.login) {
-      res.json({ isLoggedIn: true, _id: req.session.login._id });
+      res.json({
+        isLoggedIn: true,
+        _id: req.session.login,
+      });
     } else {
       res.status(400).json({ isLoggedIn: false });
     }
@@ -107,6 +111,53 @@ export default function (server, db) {
       res.status(400).json({
         message: "Ingen är inloggad",
       });
+    }
+  });
+
+  server.get("/api/userSession", async (req, res) => {
+    const user = await User.findById(req.session.login).populate([
+      {
+        path: "userBids",
+        select: "title bids",
+      },
+      {
+        path: "createdProducts",
+        select: "title bids",
+      },
+      {
+        path: "savedProducts",
+        select: "title price bids",
+      },
+    ]);
+    console.log(req.session.user);
+    res.status(200).json(user);
+  });
+
+  //Lägg till produkt i favoriter
+  server.patch("/api/users/products/:id", async (req, res) => {
+    try {
+      const id = req.params.id;
+      const user = await User.findById(req.session.login);
+      //const product = await Product.findById(id);
+
+      if (user.savedProducts.includes(id)) {
+        return res.status(400).json({
+          message: "Denna produkt finns redan i dina sparade objekt.",
+        });
+      }
+
+      user.savedProducts.push(id);
+      const savedSavedProducts = await user.save();
+
+      res.status(200).json({
+        savedSavedProducts,
+        message: "Produkten har lagts till i dina sparade objekt.",
+      });
+    } catch (error) {
+      console.error("Error adding product to user:", error);
+      res
+        .status(500)
+        .json({ error: "Kunde inte lägga till produkten i favoriter." });
     }
   });
 }
