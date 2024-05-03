@@ -63,6 +63,7 @@ export default function BidDialog({ productId, bids, minimumBid }) {
             <h2 className="text-center">Lägg bud</h2>
             <form className="flex flex-col">
               <input
+                id="bidDialogInput"
                 type="text"
                 placeholder="Bud"
                 onChange={(event) => setBidInput(event.target.value)}
@@ -72,6 +73,7 @@ export default function BidDialog({ productId, bids, minimumBid }) {
               <p>{badBidInput}</p>
 
               <button
+                id="addBidDialog"
                 type="button"
                 onClick={updateBids}
                 className="border-2 border-solid border-custom-green bg-custom-green text-custom-white rounded-md p-1 hover:bg-custom-white hover:text-custom-green"

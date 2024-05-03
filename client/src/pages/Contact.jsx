@@ -43,7 +43,6 @@ export default function Contact() {
                 placeholder="Meddelande"
               ></textarea>
               <input
-                type="submit"
                 className="bg-custom-yellow text-custom-green font-bold"
                 value="SKICKA"
               ></input>
