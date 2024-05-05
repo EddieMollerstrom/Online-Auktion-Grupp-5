@@ -3,17 +3,8 @@ import ProductCard from "./ProductCard";
 
 export default function ProductListWithFilter({ products }) {
   const [searchInput, setSearchInput] = useState("");
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [sortOrder, setSortOrder] = useState("ascending");
-
-  const handleOutsideClick = (event) => {
-    if (!event.target.closest(".SearchContainer")) {
-      setIsDropdownVisible(false);
-    }
-  };
-
-  document.addEventListener("mousedown", handleOutsideClick);
 
   const filteredProducts = products
     ? products.filter((product) => {
@@ -34,11 +25,6 @@ export default function ProductListWithFilter({ products }) {
     setSortOrder((prevSortOrder) =>
       prevSortOrder === "ascending" ? "descending" : "ascending"
     );
-  };
-
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    setIsDropdownVisible(false);
   };
 
   const filteredByCategory = selectedCategory
@@ -74,23 +60,6 @@ export default function ProductListWithFilter({ products }) {
                   setSearchInput(e.target.value);
                 }}
               />
-              {/*   <button
-                className="button"
-                onClick={() => setIsDropdownVisible(!isDropdownVisible)}
-              >
-                Start
-              </button>
-              <div className={`dropdown ${isDropdownVisible ? "active" : ""}`}>
-                {products.map((item) => (
-                  <div
-                    key={item.id}
-                    className="dropdown-row"
-                    onClick={() => handleCategoryClick(item.category)}
-                  >
-                    {item.category}
-                  </div>
-                ))}
-              </div> */}
             </div>
           </div>
         </div>
